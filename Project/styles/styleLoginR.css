@@ -144,7 +144,11 @@
     .form{
         width: 100%;
         padding: 20px 0px 0px 20px;
-        
     }
+
+    .conte-ul{
+        width: 100%;
+    }
+    
 } 
 
