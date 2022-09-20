@@ -1,13 +1,13 @@
 /*GENERAL*/
 
 *{
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: 'Open Sans', sans-serif; 
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif; 
+ }
 
-body{
+ body{
     background: #CCFCCB;
 }
 
@@ -25,8 +25,10 @@ body{
 }
 
 .texts{
-    width: 60%;
+    width: 60%;   
     margin-right: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .texts h2{
@@ -119,3 +121,30 @@ body{
     font-size: 14px;
     font-weight: 700;
 }
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 1000px ){
+
+    .texts{
+        width: 0%;   
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .texts h2{
+        color: #CCFCCB;
+    }
+    
+    .texts p{
+        color: #CCFCCB; 
+    }
+
+    .form{
+        width: 100%;
+        padding: 20px 0px 0px 20px;
+        
+    }
+} 
+
