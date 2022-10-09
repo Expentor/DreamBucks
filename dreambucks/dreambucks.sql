@@ -34,6 +34,14 @@ CREATE TABLE `admins` (
   `email_A` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `admins` (
+  `id_A` int(100) NOT NULL, 
+  `num-trab` int(100) NOT NULL,
+  `name_A` varchar(50) NOT NULL,
+  `password_A` varchar(200) NOT NULL,
+  `email_A` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Volcado de datos para la tabla `admins`
 --
@@ -74,6 +82,8 @@ INSERT INTO `loans` (`date`, `id_U1`, `quantity`, `interest`, `total`, `id_L`) V
 CREATE TABLE `users` (
   `id_U` int(100) NOT NULL,
   `name_U` varchar(60) NOT NULL,
+  `lastname1_U` varchar(60) NOT NULL,
+  `lastname2_U` varchar(60) NOT NULL,
   `password_U` varchar(200) NOT NULL,
   `email_U` varchar(100) NOT NULL,
   `debited` int(50) NOT NULL,
@@ -82,6 +92,13 @@ CREATE TABLE `users` (
   `id_A1` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE TABLE `movements` (
+  `date` date NOT NULL,
+  `id_C1` varchar(100) NOT NULL,
+  `quantity` int(100) NOT NULL,
+  `id_M` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Volcado de datos para la tabla `users`
 --
