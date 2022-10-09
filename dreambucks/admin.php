@@ -1,6 +1,7 @@
 <?php
 // este es el apartado del admi y el unico acceso para agregar usuarios nuevos
 echo "eres administrador"; 
+$clients = $conn->query("SELECT * FROM users");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,20 +14,30 @@ echo "eres administrador";
 <body>
     <a href="Register_U.php" class="">Agregar un nuevo cliente</a>
     <div>
+        <?php if($clients->rowCount() == 0): ?>
+            <div>
+                <p>No tiene ningun cliente agregado aun</p>
+            </div>
+        <?php endif ?>
+
+        <?php foreach ($clients as $client) { ?>
         <table class="clients-table">
             <tr>
-                <td>ID</td>
-                <td>Numero de cuenta</td>
-                <td>Nombres</td>
-                <td>Apellidos</td>
-                <td>Email</td>
+                <th>ID</th>
+                <th>Numero de cuenta</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Email</th>
             </tr>
             <tr>
-                <td>Informacion</td>
-                <td>Informacion</td>
-                <td>Informacion</td>
+                <td><?= $client["id"] ?></td>
+                <td><?= $client["cuenta"] ?></td>
+                <td><?= $client["nombre"] ?></td>
+                <td><?= $client["apellidos"] ?></td>
+                <td><?= $client["email"] ?></td>
             </tr>
         </table>
+        <?php } ?>
     </div>
     <a href="Logout.php" class="">Cerrar Sesion</a>
 </body>
