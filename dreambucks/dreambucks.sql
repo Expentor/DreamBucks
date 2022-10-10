@@ -91,7 +91,7 @@ INSERT INTO `users` (`id_U`, `name_U`, `password_U`, `email_U`, `debited`, `addr
 (3, 'mork', '123', '123@gAIL.COM', 26454, '1', 1, 0),
 (4, 'jose', 'q', 's@gmail.com', 0, 'campos', 314104789, 0),
 (5, 'josefa', 'q', 'sa@gmail.com', 209, 'campos', 314104789, 20202003);
-(6, 'neftali', 'elpanadero', 'prueba123@gmail.com', 0, 'idk', 3339092634, 20182755);
+
 
 
 --
