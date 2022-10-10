@@ -28,13 +28,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `id_A` int(100) NOT NULL,
-  `name_A` varchar(50) NOT NULL,
-  `password_A` varchar(200) NOT NULL,
-  `email_A` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE `admins` (
   `id_A` int(100) NOT NULL, 
   `num-trab` int(100) NOT NULL,
   `name_A` varchar(50) NOT NULL,
@@ -89,7 +82,10 @@ CREATE TABLE `users` (
   `debited` int(50) NOT NULL,
   `address` varchar(200) NOT NULL,
   `phone` bigint(13) NOT NULL,
-  `id_A1` int(100) NOT NULL
+  `id_A1` int(100) NOT NULL,
+  `admin_id` int(100) NOT NULL,
+
+  FOREIGN KEY (admin_id) REFERENCES admins(id_A)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
