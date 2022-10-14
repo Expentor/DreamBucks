@@ -1,10 +1,3 @@
-<?php
-
-    
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +15,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"> -->
 
     <!-- STYLE CSS -->
-    <link rel="stylesheet" href="../styles/styleHeaderUL.css">
-    <link rel="stylesheet" href="../styles/styleLoginUser.css">
-
+    <link rel="stylesheet" href="styles/styleHeaderUL.css">
+    <link rel="stylesheet" href="styles/styleLoginUser.css">
+    <link rel="stylesheet" href="styles/styleFooterr.css">
 
 </head>
 <body>
@@ -35,7 +28,7 @@
             <div class="menu-icon">Menú</div>
             <nav class="navigation">
                 <ul>
-                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="index.php">Inicio</a></li>
                     <li><a href="#">Acerca de</a></li>
                     <li><a href="#">Servicios</a></li>
                     <li><a href="#">Contacto</a></li>
@@ -56,15 +49,18 @@
             </div>
             <div>
                 <div class="form">
-                    <input type="text" placeholder="Correo electrónico">
-                    <input type="text" placeholder="Contraseña">
+                    <form action="Validate_U.php" method="POST">
 
-                    <button type="submit" class="enter">Iniciar sesión</button>
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <label for="name"> Usuario</label><br>
+                    <input type="text" name="name" pattern="[a-zA-Z0-9]+" maxlength="12" placeholder="Ingrese su Usuario" id="name" required>
+    
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" placeholder="Ingrese Contraseña" id="password" required>
 
-                    <hr>
-
-                    <button class="executives">Contactos de ejecutivos</button>
+                    <button type="submit" class="enter" name="enviar" value="Login_U" >Iniciar</button>
+                    <form>
+                    <a href="Register_U.php" style ="text-decoration:none">¿El cliente aun no tiene una cuenta? </a>
+                    <a href="PasswordRecovery.php" style ="text-decoration:none">¿El cliente olvido su contraseña? </a>    
                 </div>
 
                 <div class="conte-ul">
@@ -75,8 +71,15 @@
         </div>
     </main>
 
+    <?php
+
+        require "footer.html";
+
+    ?>
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="../scriptHUL.js"></script>
+    <script src="./scriptHUL.js"></script>
 
 </body>
 </html>

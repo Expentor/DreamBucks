@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dreambucks</title>
-    <link rel="stylesheet" href="../stylesp2/styleMainPage.css">
+    <link rel="stylesheet" href="./styles/styleMainPages.css">
 
 </head>
 <body>
@@ -19,11 +19,10 @@
             <div class="menu">
                 <nav>
                     <ul>
-                        <li><a href="#">Inicio</a></li>
                         <li><a href="#">Acerca de</a></li>
                         <li><a href="#">Contactos</a></li>
-                        <li><a href="#">Usuario</a></li>
-                        <li><a href="#">Administrador</a></li>
+                        <li><a href="loginU.php">Usuario</a></li>
+                        <li><a href="LoginA.php">Administrador</a></li>
                     </ul>
                 </nav>
             </div>
@@ -48,6 +47,12 @@
             </div>
         </div>
     </main>
+
+    <?php
+
+        require "footer.html"
+
+    ?>
     
 </body>
 </html>
