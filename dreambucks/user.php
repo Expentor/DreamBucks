@@ -17,7 +17,6 @@ mysqli_set_charset($connect, "utf8");
 // accedemos a la tabla usuarios para obtener informacion de nuestro usuario 
 $consult = "SELECT * FROM users WHERE name_U='$user'"; 
 $result  = mysqli_query($connect, $consult);
-
 while ($row = mysqli_fetch_row($result)){
 ?>
 <?php   
@@ -27,78 +26,103 @@ while ($row = mysqli_fetch_row($result)){
 ?><br><br>
 <?php
 }
-// guardamos en una variable la fecha actual pero con la funcion strotime lo convertimos en segundos, debido a que durante la presentacion no pueden esperar a que pasa un mes
-// sumaremos los meses necesarios para la presentacion 
-$today = strtotime(date('Y-m-d'). "+ 0 month");
+
 // accdedemos a la tabla de prestamos y utilizamos el id del usuario para encontrar sus prestamos y mostrar la informacion
 $consult = "SELECT * FROM loans WHERE id_U1='$id'"; 
 $result  = mysqli_query($connect, $consult);
-
 while ($row2 = mysqli_fetch_row($result)){
 ?>
- <?php  echo 'fecha del prestamo: '. $row2[0];  ?> <br>
- <?php  echo 'cantidad prestada: ' . $row2[2]; ?> <br>
- <?php  echo 'el porcentaje de interes fue del: '. $row2[3] . '%';?> <br>
- <?php  echo 'faltante de pagar por este prestamo: '.   $row2[4];?><br>
- <?php  echo 'lapsos solicitados: '.   $row2[6];?><br>
- <?php
- //vale esto es lo dificil. guardamos en una variable la fecha en la que se hizo el prestamo 
- $dateLoan = $row2[0];
- //obtenemos la diferencia entre hoy y la fecha en la que se hizo el prestamo en segundos 
- $difference = $today - strtotime($dateLoan);
- //ahora realizamos esta operacion para determinar a cuantos meses equivale la diferencia anteriormente mencionada 
- $months = $difference / 2628000 ;
- //aqui le sumamos .5 por que al momento de redondear debe redondear hacia arriba siempre 
- $months2 = $months + .5;
- //aqui establecemos el dia que debe de pagar osea la fecha en la que hizo el prestamo mas los meses que han trasncurrido por ello redondea hacia arriba ->
- //indicando que te falta como maximo un mes para pagar como minimo 1 dia 
- $dayPay = strtotime($dateLoan. "+". round($months2). "month"); ?>
-<?php  echo 'ultima fecha para pagar la cuota actual: ' . date('Y-m-d',$dayPay)?><br>
- <?php
- $loan = date_create($dateLoan);
- $custom_date = date_create('2022-10-14');
- $interval = date_diff($loan, $custom_date);
+ <?php  
+   echo 'fecha del prestamo: '                 .$row2[0] .      "<br>";
+   echo 'cantidad prestada: '                  .$row2[2] .      "<br>" ;
+   echo 'el porcentaje de interes fue del: '   .$row2[3] . '%' ."<br>";
+   echo 'faltante de pagar por este prestamo: '.$row2[4] .      "<br>";
+   echo 'lapsos solicitados: '                 .$row2[6] .      "<br>";
+ 
+ //DECLARAR variables provenientes de la tabla loans
+ $lapses = $row2[6];    // guardo los lapsos en esta variable
+ $dateLoan = $row2[0]; //guardamos en una variable la fecha en la que se hizo el prestamo 
+ $id_U = $row2[1]; //identificacion del usuario
+ $idloan = $row2[5]; //identificacion del prestamo
+ $quota = $row2[7]; //la cuota que se pagara cada mes
+ $due = $row2[8]; //lo que actualmente debe de este prestamo el usuario
+ $iterator = $row2[9]; //el iterador que ayuda a que cada mes no se ejecute 2 veces la misma accion o peticion
+ $total = $row2[4]; //el total del prestamo
 
- $id_U = $row2[1];
- $idloan = $row2[5];
- $quota = $row2[7];
- $due = $row2[8];
- $newDue = $due + $quota;
- $newDue2 = $due - $quota;
- $NegativeBalance = $balance - $quota;                  
- $n= $interval->format('%m') % 30;
- $sql  = "UPDATE loans
+
+ $loan = date_create($dateLoan);//  creamos la fecha de la creacion del prestamo obtenida de la base de datos
+ $date = date("Y-m-d"); //esta es la fecha que sera personalizada 
+ $custom_date = strtotime('+ 0 months', strtotime($date)); // AQUI SE MODIFICA LA FECHA, esta fecha se personaliza por intenciones de la presentacion, (demostrar que sucede si avanzamos en el tiempo)
+ $custom_date = date("Y-m-d", $custom_date); //convertimos la fecha modificada en segundos a una fecha legible o en un formato comun años/meses/dias
+ $dayPay = strtotime('+ 1 months',strtotime($custom_date)); //el dia de pago tiene que ser un mes depues a la fecha en la que se creo el prestamo y mostrar el ultimo dia para pagar
+ $custom_date = date_create($custom_date); //creamos la fecha ya personalizada
+ $interval = date_diff($loan, $custom_date);// la diferencia entre ambas fechas (la del prestamo y la personalizada)
+ 
+ $newDue = $due + $quota; //la deuda actualizada (es la suma de lo que debe mas la nueva quota del nuevo mes)
+ $newDue2 = $due - $quota; //el resultado de restalerle una quota al la deduda como si fuera pagada se utiliza cuando hacemos un pago forzado 
+ $NegativeBalance = $balance - $quota;// se guarda en esta variable el resultante de descontarle una cuota entera a lo que tiene el usuario guardado (castigo o saldo negativa)                  
+ $Newtotal = $total - $quota; //la deuda actualizada (el resultado de restalerle una quota al la deduda como si fuera pagada)se utiliza cuando hacemos un pago forzado
+
+ //actualizamos que lo que debe el usuario se le sumara una quota
+ $update_due  = "UPDATE loans
           SET    due = '$newDue'
-          WHERE  id_L  = '$idloan'";
+          WHERE  id_L  = '$idloan'"; 
 
- $sql2  = "UPDATE users
+//le restaremos al usuario una quota como castigo por no pagar a tiempo es como un cobro forzoso
+ $subtract_balance = "UPDATE users
           SET    balance = '$NegativeBalance'
           WHERE  id_U  = '$id_U'";
 
- $sql3  ="UPDATE loans
+//despues de realizar el pago forzado por ende la cuota fue pagada y tiene que descontarse
+ $forced_payment ="UPDATE loans
           SET    due = '$newDue2'
           WHERE  id_l  = '$idloan'";
 
-        if($n==0){
-                if($due>0){
-                        if($newDue >= $quota * 2){
-                                echo 'usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta<br> ';
-                                if(mysqli_query($connect,$sql2)){
-                                        if(mysqli_query($connect,$sql3)){
-                                        } else {
-                                                echo "Error: " . $sql2 . "<br>" . mysqli_error($connect);
-                                                }
-                                } else {
-                                        echo "Error: " . $sql3 . "<br>" . mysqli_error($connect);
-                                        }
-                        }
-                        else if(mysqli_query($connect,$sql)){
+//le restamos al total la cuota que fue descontada en el pago forzoso 
+$subtract_total ="UPDATE loans
+          SET    total = '$Newtotal'
+          WHERE  id_l  = '$idloan'";
+
+        //si han transucirrido 30 dias, el iterator aun no se a actualizado se realiza lo siguiente y aun no se superan los lapsos solicitados
+        if($interval->format('%m') == $iterator && $interval->format('%m') <= $lapses){  ;
+                $iterator2 = $iterator + 1;
+
+                $update_iterator = "UPDATE loans
+                SET    months = '$iterator2'
+                WHERE  id_l  = '$idloan'";
+
+                if($interval->format('%m') != 0){
+                        if(mysqli_query($connect,$update_due)){ //si ha pasado un mes y debe menos de dos quotas sumadas se ejecuta la suma de la nueva quota
                         } else {
-                        echo "Error: " . $sql . "<br>" . mysqli_error($connect);
-                        }
+                        echo "Error: " . $update_due . "<br>" . mysqli_error($connect);
+                        }           
                 }
+                if(mysqli_query($connect,$update_iterator)){ //actualizamos el iterador para que no suceda nuevos cambios hasta el siguiente mes  
+                } else {
+                        echo "Error: " . $update_iterator . "<br>" . mysqli_error($connect);
+                        }
+                              
         }
-        echo 'este mes usted tiene que pagar esta cantidad : ' . $row2[8];
+
+        if($due > $quota){
+                echo 'usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta<br> ';
+
+                if(mysqli_query($connect,$subtract_balance)){ //ejecutamos la resta de su cuenta
+                } else {
+                        echo "Error: " . $subtract_balance . "<br>" . mysqli_error($connect);
+                        }
+                if(mysqli_query($connect,$forced_payment)){ //ejecutamos el pago forzoso lo cual indica que pago una parte de un prestamo
+                } else {
+                        echo "Error: " . $forced_payment . "<br>" . mysqli_error($connect);
+                        }
+                if(mysqli_query($connect,$subtract_total)){
+                } else {
+                        echo "Error: " . $subtract_total . "<br>" . mysqli_error($connect);
+                        }
+        }
+        echo 'ultima fecha para pagar la cuota actual: ' . date('Y-m-d',$dayPay) . "<br>";
+        echo 'este mes usted tiene que pagar esta cantidad : ' . $row2[8] . '<br>';
+        echo  $interval->format('%m') . '/////' . $iterator;
  ?>
 <br>
  <a href="Pay.php?id=<?php echo $row2[5]?>">pagar</a><br> 
