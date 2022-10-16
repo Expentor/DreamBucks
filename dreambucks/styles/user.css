@@ -10,10 +10,32 @@
 }
 
 .container_a{
-    
+    max-width: 35%;
+    height: 100%;
+    margin: 20px;
+    padding: 20px;
+    border-style: solid;
+    border-color:black;
+    background-color: green;
+    color: white;
+
+
+
+    /*
+    width: 350px;
+    color: peru;
+    border-style: solid;
+    border-color:white;
+    */
+
 }
 
-.container_a .a{
-    color: red;
+.a{  
     display:inline;
+}
+
+.text{
+    display:inline;
+    padding-top: 2000px;
+    padding-left: 20px;
 }

@@ -34,7 +34,7 @@ $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
 <?php   
-        echo 'Usted debe un total de: '. $row[4]; //lo que debe el usuario
+        echo '<h3 class="text">Usted debe un total de: '. $row[4],  '</h3>';  //lo que debe el usuario
         $id = $row[0]; //guardamos su id en una variable
         $balance = $row[8]; 
 ?><br><br>
@@ -50,12 +50,11 @@ while ($row2 = mysqli_fetch_row($result)){
 <div class="container_a">
    <?php   
    echo '<p class="a">Fecha del prestamo: </p>'                 .$row2[0] .      "<br>";
-   echo 'Cantidad prestada: '                  .$row2[2] .      "<br>" ;
-   echo 'El porcentaje de interes fue del: '   .$row2[3] . '%' ."<br>";
-   echo 'Faltante de pagar por este prestamo: '.$row2[4] .      "<br>";
-   echo 'Lapsos solicitados: '                 .$row2[6] .      "<br>";
-   ?>clea
-</div>
+   echo '<p class="a">Cantidad prestada: </p>'                  .$row2[2] .      "<br>" ;
+   echo '<p class="a">El porcentaje de interes fue del: </p>'   .$row2[3] . '%' ."<br>";
+   echo '<p class="a">Faltante de pagar por este prestamo: </p>'.$row2[4] .      "<br>";
+   echo '<p class="a">Lapsos solicitados: </p>'                 .$row2[6] .      "<br>";
+   ?>
 
 <?php  
 
@@ -125,8 +124,11 @@ $subtract_total ="UPDATE loans
         }
 
         if($due > $quota){
-                echo 'Usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta<br> ';
 
+                echo '<p class="a">Usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta </p><br> ';
+
+   
+   
                 if(mysqli_query($connect,$subtract_balance)){ //ejecutamos la resta de su cuenta
                 } else {
                         echo "Error: " . $subtract_balance . "<br>" . mysqli_error($connect);
@@ -140,13 +142,16 @@ $subtract_total ="UPDATE loans
                         echo "Error: " . $subtract_total . "<br>" . mysqli_error($connect);
                         }
         }
-        echo 'Ultima fecha para pagar la cuota actual: ' . date('Y-m-d',$dayPay) . "<br>";
-        echo 'Este mes usted tiene que pagar esta cantidad : ' . $row2[8] . '<br>';
+
+           
+        echo '<p class="a">Ultima fecha para pagar la cuota actual: </p>' . date('Y-m-d',$dayPay) . "<br>";
+        echo '<p class="a">Este mes usted tiene que pagar esta cantidad : </p>' . $row2[8] . '<br>';
         echo  $interval->format('%m') . '/////' . $iterator;
+
  ?>
 <br>
  <a href="Pay.php?id=<?php echo $row2[5]?>">pagar</a><br> 
-
+        </div>
  <br><br><br>
 <?php
 }
