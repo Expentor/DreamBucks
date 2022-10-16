@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #CCFCCB;
+    color: #3C760C;
+    min-height: 100vh;
+}
+
+body, .cubo, .loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 20%;
+    height: 190px;
+}
+
+button{
+    background: #0fb42b;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 40px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: #F1FFFA;
+}
+
+.cubo{
+    height: 60%;
+    transform-style: preserve-3d;
+    animation: rotar 8s linear infinite;
+}
+
+.cubo > span{
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    border: 2px solid #3C760C;
+    box-shadow: inset 0px 9px 15px 5px #F1FFFA, 0px 0px 40px 1px #F1FFFA;
+    border-radius: 4px;
+}
+
+.cubo > span:nth-child(1){transform: rotateY(90deg)translateZ(2em);}
+
+.cubo > span:nth-child(2){transform: rotateY(90deg)translateZ(-2em);}
+
+.cubo > span:nth-child(3){transform: rotateY(90deg)translateZ(-2em);}
+
+.cubo > span:nth-child(4){transform: rotateY(90deg)translateZ(2em);}
+
+.cubo > span:nth-child(5){transform: translateZ(-2em);}
+
+.cubo > span:nth-child(6){transform: translateZ(2em);}
+
+.loading{
+    height: 70%;
+}
+
+@keyframes rotar {
+    0%{transform: rotateY(0deg)rotateX(0deg);}
+    50%{transform: rotateY(360deg)rotateX(360deg);}
+    100%{transform: rotateY(0deg)rotateX(0deg);}
+}
+
+h1, p{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
