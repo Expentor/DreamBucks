@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-09-2022 a las 05:16:35
+-- Tiempo de generación: 14-10-2022 a las 05:02:35
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -53,17 +53,32 @@ CREATE TABLE `loans` (
   `quantity` int(100) NOT NULL,
   `interest` int(100) NOT NULL,
   `total` int(100) NOT NULL,
-  `id_L` int(100) NOT NULL
+  `id_L` int(100) NOT NULL,
+  `lapses` int(50) NOT NULL,
+  `quota` bigint(200) NOT NULL,
+  `due` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `loans`
 --
 
-INSERT INTO `loans` (`date`, `id_U1`, `quantity`, `interest`, `total`, `id_L`) VALUES
-('2022-09-28', '3', 40000, 0, 2899, 7),
-('2022-09-28', '3', 10200, 0, 8666, 2),
-('2022-09-21', '3', 15000, 0, 14889, 10);
+INSERT INTO `loans` (`date`, `id_U1`, `quantity`, `interest`, `total`, `id_L`, `lapses`, `quota`, `due`) VALUES
+('2022-10-13', '3', 10000, 0, 11076, 27, 6, 1846, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `movements`
+--
+
+CREATE TABLE `movements` (
+  `date` date NOT NULL,
+  `id_U2` int(100) NOT NULL,
+  `id_M` int(100) NOT NULL,
+  `total` int(100) NOT NULL,
+  `type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -79,18 +94,20 @@ CREATE TABLE `users` (
   `debited` int(50) NOT NULL,
   `address` varchar(200) NOT NULL,
   `phone` bigint(13) NOT NULL,
-  `id_A1` int(100) NOT NULL
+  `id_A1` int(100) NOT NULL,
+  `balance` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_U`, `name_U`, `password_U`, `email_U`, `debited`, `address`, `phone`, `id_A1`) VALUES
-(2, '2', '2', 'pepe@gmail.com', 0, '2', 2, 0),
-(3, 'mork', '123', '123@gAIL.COM', 26454, '1', 1, 0),
-(4, 'jose', 'q', 's@gmail.com', 0, 'campos', 314104789, 0),
-(5, 'josefa', 'q', 'sa@gmail.com', 209, 'campos', 314104789, 20202003);
+INSERT INTO `users` (`id_U`, `name_U`, `password_U`, `email_U`, `debited`, `address`, `phone`, `id_A1`, `balance`) VALUES
+(2, '2', '2', 'pepe@gmail.com', 0, '2', 2, 0, 0),
+(3, 'mork', '123', '123@gAIL.COM', 706, '1', 1, 0, 14462),
+(4, 'jose', 'q', 's@gmail.com', 0, 'campos', 314104789, 0, 0),
+(5, 'josefa', 'q', 'sa@gmail.com', 209, 'campos', 314104789, 20202003, 0),
+(6, 'matias', '2', '2@ucol.mx', 995, '1', 1, 20202003, 0);
 
 
 
@@ -103,6 +120,18 @@ INSERT INTO `users` (`id_U`, `name_U`, `password_U`, `email_U`, `debited`, `addr
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id_A`);
+
+--
+-- Indices de la tabla `loans`
+--
+ALTER TABLE `loans`
+  ADD PRIMARY KEY (`id_L`);
+
+--
+-- Indices de la tabla `movements`
+--
+ALTER TABLE `movements`
+  ADD PRIMARY KEY (`id_M`);
 
 --
 -- Indices de la tabla `users`
@@ -124,20 +153,22 @@ ALTER TABLE `admins`
   MODIFY `id_A` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20202004;
 
 --
+-- AUTO_INCREMENT de la tabla `loans`
+--
+ALTER TABLE `loans`
+  MODIFY `id_L` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de la tabla `movements`
+--
+ALTER TABLE `movements`
+  MODIFY `id_M` int(100) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_U` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `admins`
---
-ALTER TABLE `admins`
-  ADD CONSTRAINT `admins_ibfk_1` FOREIGN KEY (`id_A`) REFERENCES `users` (`id_A1`) ON UPDATE CASCADE;
+  MODIFY `id_U` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

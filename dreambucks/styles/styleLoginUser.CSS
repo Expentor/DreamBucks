@@ -1,0 +1,162 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif; 
+ }
+
+ body{
+    background: #CCFCCB;
+}
+
+/*LOGIN*/
+
+main{
+    padding-top: 5rem;
+}
+
+.container{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    height: 95vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.texts{
+    width: 60%;   
+    margin-right: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.texts h2{
+    font-size: 55px;
+    color: #3C760C;
+}
+
+.texts p{
+    color: #000000;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32px;   
+}
+
+.form{
+    width: 450px;
+    height: 349px;
+    border-radius: 10px;
+    border: 1px solid #3C760C;
+    box-shadow: 0px 8px 32px #3C760C;
+    background: #F1FFFA;
+    padding: 20px 0 20px 0;
+    margin: 40px 0px 0px 0;
+    text-align: center;
+}
+
+.form input{
+    width: 420px;
+    height: 52px;
+    background: #CCFCCB;
+    padding: 14px 16px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 13px;
+    border: none;
+    border: 1px solid white;
+    box-shadow: 0px 2px 10px rgba(153, 153, 153, 0.30);
+}
+
+.form input:focus{
+    border-color: #64554E;
+    outline: none;
+}
+
+.form .enter{
+    width: 420px;
+    height: 52px;
+    background: #3C760C;
+    color: #F1FFFA;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.form a{
+    display: inline-block;
+    text-decoration: none;
+    color: #3C760C;
+    margin-bottom: 20px;
+}
+
+.form hr{
+    margin: 0 20px 0 20px;
+    margin-bottom: 20px;
+    border: 0.2px solid #64554E;
+}
+
+.form .executives{
+    width: 189.8px;
+    height: 48px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: none;
+    color: #F1FFFA;
+    background: #3C760C;
+}
+
+.conte-ul{
+    width: 90%;
+}
+
+.outside{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.outside span{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 1000px ){
+
+    .texts{
+        width: 0%;   
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .texts h2{
+        color: #CCFCCB;
+    }
+    
+    .texts p{
+        color: #CCFCCB; 
+    }
+
+    .form{
+        width: 100%;
+        padding: 20px 0px 0px 20px;
+    }
+
+    .conte-ul{
+        width: 100%;
+    }
+
+    
+} 
+
+@media screen and (max-width: 769px ){
+    main{
+        padding-top: 3rem;
+    }
+}

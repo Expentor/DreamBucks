@@ -18,25 +18,34 @@ $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
 <?php 
-    $debt= $row[4];// guardamos en una variable lo que le falta por pagar al usuario
+    $total= $row[4];// guardamos en una variable lo que le falta por pagar al usuario
     $id_U1 = $row[1]; //guardamos el id del usuario
+    $due = $row[8];
 ?>
 <?php
 }
 // se realiza la  simple operacion de resta 
-$total = $debt - $deposit;
+$total = $total - $deposit;
+$due = $due- $deposit;
 
 // actualizamos en la base de datos la nueva info(cuanto le queda por pagar al usuario)
 $sql = "UPDATE loans
         SET    total = '$total'
         WHERE  id_L  = '$id'";
 
+$sql2 = "UPDATE loans
+         SET     due = '$due'
+         WHERE  id_L  = '$id'";
+
 if(mysqli_query($connect,$sql)){
     header("location: user.php");
-} else {
+    
+    if(mysqli_query($connect,$sql2)){
+        header("location: user.php");
+    } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($connect);
-} 
-
+    } 
+}
 // aqui sumamos todos los prestamos del usuario(tanto los abonados como los nuevos) para sacar un total y mostrarselo en la pagina de user.php
 $consult = "SELECT SUM(total) as result FROM loans WHERE id_U1 = '$id_U1'";
 $result = mysqli_query($connect, $consult);

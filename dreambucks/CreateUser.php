@@ -32,7 +32,7 @@ if(!$consultId){
 
     // insertamos en la base de datos la informacion, los espacios en blanco son datos que aun no se tienen
     if(!$consultE){
-    $sql = "INSERT INTO users VALUES ('', '$NAME', '$PASSWORD', '$EMAIL','','$ADDRESS', '$PHONE', '$ADMIN')";    
+    $sql = "INSERT INTO users VALUES ('', '$NAME', '$PASSWORD', '$EMAIL','','$ADDRESS', '$PHONE', '$ADMIN', '')";    
     }else {
     echo "<script>
     alert('email existente');
