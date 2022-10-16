@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/user.css">
+        <title>User</title>
+</head>
+<body>
+        
+</body>
+</html>
+
 <?php
 include("ConnectDB.php");
 // obtenemos el nombre de usuario con la variable global SESSION
@@ -20,7 +34,7 @@ $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
 <?php   
-        echo 'usted debe un total de: '. $row[4]; //lo que debe el usuario
+        echo 'Usted debe un total de: '. $row[4]; //lo que debe el usuario
         $id = $row[0]; //guardamos su id en una variable
         $balance = $row[8]; 
 ?><br><br>
@@ -32,13 +46,19 @@ $consult = "SELECT * FROM loans WHERE id_U1='$id'";
 $result  = mysqli_query($connect, $consult);
 while ($row2 = mysqli_fetch_row($result)){
 ?>
- <?php  
-   echo 'fecha del prestamo: '                 .$row2[0] .      "<br>";
-   echo 'cantidad prestada: '                  .$row2[2] .      "<br>" ;
-   echo 'el porcentaje de interes fue del: '   .$row2[3] . '%' ."<br>";
-   echo 'faltante de pagar por este prestamo: '.$row2[4] .      "<br>";
-   echo 'lapsos solicitados: '                 .$row2[6] .      "<br>";
- 
+
+<div class="container_a">
+   <?php   
+   echo '<p class="a">Fecha del prestamo: </p>'                 .$row2[0] .      "<br>";
+   echo 'Cantidad prestada: '                  .$row2[2] .      "<br>" ;
+   echo 'El porcentaje de interes fue del: '   .$row2[3] . '%' ."<br>";
+   echo 'Faltante de pagar por este prestamo: '.$row2[4] .      "<br>";
+   echo 'Lapsos solicitados: '                 .$row2[6] .      "<br>";
+   ?>clea
+</div>
+
+<?php  
+
  //DECLARAR variables provenientes de la tabla loans
  $lapses = $row2[6];    // guardo los lapsos en esta variable
  $dateLoan = $row2[0]; //guardamos en una variable la fecha en la que se hizo el prestamo 
@@ -105,7 +125,7 @@ $subtract_total ="UPDATE loans
         }
 
         if($due > $quota){
-                echo 'usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta<br> ';
+                echo 'Usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta<br> ';
 
                 if(mysqli_query($connect,$subtract_balance)){ //ejecutamos la resta de su cuenta
                 } else {
@@ -120,8 +140,8 @@ $subtract_total ="UPDATE loans
                         echo "Error: " . $subtract_total . "<br>" . mysqli_error($connect);
                         }
         }
-        echo 'ultima fecha para pagar la cuota actual: ' . date('Y-m-d',$dayPay) . "<br>";
-        echo 'este mes usted tiene que pagar esta cantidad : ' . $row2[8] . '<br>';
+        echo 'Ultima fecha para pagar la cuota actual: ' . date('Y-m-d',$dayPay) . "<br>";
+        echo 'Este mes usted tiene que pagar esta cantidad : ' . $row2[8] . '<br>';
         echo  $interval->format('%m') . '/////' . $iterator;
  ?>
 <br>

@@ -22,8 +22,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"> -->
 
     <!-- STYLE CSS -->
-    <link rel="stylesheet" href="styles/styleHeaderUL.css">
-    <link rel="stylesheet" href="styles/styleLoginUser.css">
+    <link rel="stylesheet" href="./styles/styleHeaderUL.css">
+    <link rel="stylesheet" href="./styles/styleLoginUser.css">
 
 
 </head>
