@@ -22,12 +22,12 @@ $rows= mysqli_num_rows($result);
 if($rows){
     session_start();
     $_SESSION["name_U"] = $_POST["name"];
-    header("location:user.php"); 
+    header("location:trueData.html"); 
 
 }else{
     echo "<script>
         alert('Usuario o Password incorrecto');
-        window.location =Login_U.php;
+        window.location =Fakedata.html;
     </script>";
 
 }

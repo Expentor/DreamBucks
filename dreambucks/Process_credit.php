@@ -47,19 +47,19 @@ $consult_U = mysqli_fetch_array($consult_U);
             </script>";
             }            
                 if(mysqli_query($connect,$sql)){
-                    header("location: user.php");
+                    header("location: admin.php");
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($connect);
                 } 
                 if(mysqli_query($connect,$sql2)){
-                    header("location: user.php");
+                    header("location: admin.php");
                 } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($connect);
+                    echo "Error: " . $sql2 . "<br>" . mysqli_error($connect);
                 } 
         } else {
             echo "<script>
             alert('usuario existente');
-            window.location = 'CreateLoan.php';
+            window.location = 'Credit_Recharge.php';
             </script>";
         }
 

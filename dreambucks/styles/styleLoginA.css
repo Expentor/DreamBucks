@@ -1,0 +1,135 @@
+:root{
+    --cremamenta: #F1FFFA;
+    --verdete: #CCFCCB;
+    --verdesalvia: #3C760C;
+    --negro: #090909;
+    --ocre: #64554E;
+    --verde: #0fb42b;
+    --fuente: Arial, Helvetica, sans-serif;
+}
+
+/*Box sizing hace que todos los valores en los contenedores respeten el width y height colocados, sin que utilize más*/
+
+html{
+    box-sizing: border-box;
+}
+
+*,*::after, *::before{
+    box-sizing: inherit;
+}
+
+body{
+    font-family: var(--fuente);
+    *background-color: var(--negro);
+    background-image: url('../images/bg-login-a.jpeg');
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 95%; 
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.photo-form{
+    background-image: url('../images/administrator-bg\,jpg.jpg');
+    background-position: center center;
+    background-size: cover;
+    width: 500px;
+    height: auto;
+    /*flex-grow
+      flex-shrink
+      flex-basis*/
+    flex: 9, 0, calc(60%);
+    position: relative;
+    z-index: -1;
+}
+
+.photo-form::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: linear-gradient(to right, rgba(141, 169, 196,.5), rgba(19, 64, 116, .5));
+}
+
+.form-container{
+    display: flex;
+    align-items: space-between;
+    align-content: center;
+}
+
+@media(max-width:768px){
+    .form-container{
+        display: flex;
+    }
+    .photo-form img{
+        background-position: center center;
+        background-size: cover;
+        width: 0px;
+        height: 0px;
+        /*flex-grow
+          flex-shrink
+          flex-basis*/
+        flex: 9, 0, calc(60%);
+    }
+    
+}
+
+.form{
+    padding: 50px;
+    background-color: var(--verde);
+}
+
+.form-text h2, .input label, .forgot-password a{
+    color: var(--verdete);
+}
+
+.form-text h2{
+    font-size: 40px;
+    text-align: center;
+}
+
+.form-text p{
+    font-size: 22px;
+    text-align: center;
+}
+
+.input label{
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.forgot-password a{
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.input input{
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.input input[type="submit"]{
+    background-color: var(--verdete);
+    color: var(--negro);
+    font-size: 20px;
+    *font-weight: bold;
+    border: none;
+    transition: background-color .3s ease-in-out;
+    margin-top: 20px;
+}
+
+.input input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: var(--ocre);
+    color: var(--cremamenta);
+}

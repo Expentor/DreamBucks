@@ -19,11 +19,10 @@ session_start();
 $user= $_SESSION["name_U"];
 
 // borramos aquellos prestamos que ya fueron pagados
-$delete = "DELETE from loans where total<=0";
-
+$delete = "DELETE from loans where total<=1";
 if(mysqli_query($connect,$delete)){
 }else{
-        echo "Error: " . $sql . "<br>" . mysqli_error($connect);
+        echo "Error: " . $delete . "<br>" . mysqli_error($connect);
 }
 
 mysqli_set_charset($connect, "utf8");            
@@ -34,9 +33,18 @@ $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
 <?php   
-        echo '<h3 class="text">Usted debe un total de: '. $row[4],  '</h3>';  //lo que debe el usuario
         $id = $row[0]; //guardamos su id en una variable
-        $balance = $row[8]; 
+        $balance = $row[8]; //guardamos el saldo del usuario
+        if($balance<0){
+                echo "actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio
+                .<br> ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion <br> <br>
+                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: " .'$' . abs($balance) . '<br>';
+        } else {
+                echo 'cuentas con un saldo de: $' . $row[8] . "<br>"; //el saldo del cliente
+        }
+        
+        echo 'usted debe un total de: $'. $row[4] . "<br>";  //lo que debe el usuario
+        
 ?><br><br>
 <?php
 }
@@ -68,12 +76,16 @@ while ($row2 = mysqli_fetch_row($result)){
  $iterator = $row2[9]; //el iterador que ayuda a que cada mes no se ejecute 2 veces la misma accion o peticion
  $total = $row2[4]; //el total del prestamo
 
-
+ $n = 3;
  $loan = date_create($dateLoan);//  creamos la fecha de la creacion del prestamo obtenida de la base de datos
  $date = date("Y-m-d"); //esta es la fecha que sera personalizada 
- $custom_date = strtotime('+ 0 months', strtotime($date)); // AQUI SE MODIFICA LA FECHA, esta fecha se personaliza por intenciones de la presentacion, (demostrar que sucede si avanzamos en el tiempo)
+ $custom_date = strtotime('+'. $n . 'months', strtotime($date)); // AQUI SE MODIFICA LA FECHA, esta fecha se personaliza por intenciones de la presentacion, (demostrar que sucede si avanzamos en el tiempo)
  $custom_date = date("Y-m-d", $custom_date); //convertimos la fecha modificada en segundos a una fecha legible o en un formato comun años/meses/dias
- $dayPay = strtotime('+ 1 months',strtotime($custom_date)); //el dia de pago tiene que ser un mes depues a la fecha en la que se creo el prestamo y mostrar el ultimo dia para pagar
+//  if($n <= $lapses){
+         $dayPay = strtotime('+ 1 months',strtotime($custom_date)); //el dia de pago tiene que ser un mes depues a la fecha en la que se creo el prestamo y mostrar el ultimo dia para pagar
+//  } else {
+//         $dayPay = strtotime('+' . $lapses . 'months',strtotime($dateLoan)); 
+//  }
  $custom_date = date_create($custom_date); //creamos la fecha ya personalizada
  $interval = date_diff($loan, $custom_date);// la diferencia entre ambas fechas (la del prestamo y la personalizada)
  
@@ -102,7 +114,7 @@ $subtract_total ="UPDATE loans
           SET    total = '$Newtotal'
           WHERE  id_l  = '$idloan'";
 
-        //si han transucirrido 30 dias, el iterator aun no se a actualizado se realiza lo siguiente y aun no se superan los lapsos solicitados
+        //si han transucirrido 30 dias, el iterator aun no se a actualizado y aun no se superan los lapsos solicitados  se realiza lo siguiente
         if($interval->format('%m') == $iterator && $interval->format('%m') <= $lapses){  ;
                 $iterator2 = $iterator + 1;
 
@@ -119,7 +131,7 @@ $subtract_total ="UPDATE loans
                 if(mysqli_query($connect,$update_iterator)){ //actualizamos el iterador para que no suceda nuevos cambios hasta el siguiente mes  
                 } else {
                         echo "Error: " . $update_iterator . "<br>" . mysqli_error($connect);
-                        }
+                        }     
                               
         }
 
@@ -140,7 +152,7 @@ $subtract_total ="UPDATE loans
                 if(mysqli_query($connect,$subtract_total)){
                 } else {
                         echo "Error: " . $subtract_total . "<br>" . mysqli_error($connect);
-                        }
+                        }      
         }
 
            
@@ -154,10 +166,26 @@ $subtract_total ="UPDATE loans
         </div>
 
 <?php
-}
 
+}
+// aqui sumamos todos los prestamos del usuario(tanto los abonados como los nuevos) para sacar un total y mostrarselo en la pagina
+$consult = "SELECT SUM(total) as result FROM loans WHERE id_U1 = '$id'"; //el id del usaurio lo obtuve de la consulta row[0] 
+$result = mysqli_query($connect, $consult);
+$row3 = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+$debited = $row3["result"]; //guardamos en la variable la suma total
+
+//actualizamos la nueva info(la suma total de los pretamos)
+$update_debited = "UPDATE users
+        SET    debited = '$debited'
+        WHERE  name_U='$user'";
+if(mysqli_query($connect,$update_debited)){
+} else {
+echo "Error: " . $update_debited . "<br>" . mysqli_error($connect);
+}    
 
 ?>
 
 
-<a href="Logout.php" class="buttowon">Cerrar Sesion</a>
+<br>
+<a href="Logout.php" class="">Cerrar Sesion</a>

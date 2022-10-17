@@ -1,7 +1,7 @@
 <!-- formulario para recargar saldo/dinero -->
 
 <section>
-        <form method="post" action="Process_Recharge.php">
+        <form method="post" action="Process_credit.php">
 
         <label for="name">Ingresa tu nombre:</label>
         <input class="" type="text" name="name" pattern="[a-zA-Z0-9]+" maxlength="8" placeholder="nombre" id="name" required>

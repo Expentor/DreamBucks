@@ -15,6 +15,7 @@ $interest = .03;
 $w = 1+$interest; //pa ahorrar codigo es parte de la formula
 $quota = $QUANTIFY * ((pow($w,$LAPSES) * $interest) / (pow($w,$LAPSES)-1)); //formula para conseguir la cuota de pago mensual
 $total = $quota * $LAPSES;
+
 // accedemos a la tabla usuarios para obtener el adeudado total de nuestro usuario 
 $consult = "SELECT * FROM users WHERE name_U='$NAME'"; 
 $result  = mysqli_query($connect, $consult);
@@ -38,7 +39,7 @@ $consult_U = "SELECT name_U
 $consult_U = mysqli_query($connect, $consult_U); 
 $consult_U = mysqli_fetch_array($consult_U);
 
-if($totalDebt>=5000000){
+if($totalDebt>=100000){
     echo "<script>
     alert('este usuario excedio limite');
     window.location = 'admin.php';
@@ -47,7 +48,7 @@ if($totalDebt>=5000000){
         if($consult_U){
         // insertamos en la base de datos la informacion, los espacios en blanco son datos que aun no se tienen
         if(!$consultE){
-        $sql = "INSERT INTO loans VALUES ('$DATE', '$id_U', '$QUANTIFY','$interest','$total', '', '$LAPSES','$quota', '$quota')";    
+        $sql = "INSERT INTO loans VALUES ('$DATE', '$id_U', '$QUANTIFY','3','$total', '', '$LAPSES','$quota', '$quota','0')";    
         }else {
         echo "<script>
         alert('error');
@@ -63,11 +64,27 @@ if($totalDebt>=5000000){
         
         } else {
             echo "<script>
-            alert('usuario existente');
+            alert('usuario o contraseña erronea');
             window.location = 'CreateLoan.php';
             </script>";
         }
 }
 
+
+// aqui sumamos todos los prestamos del usuario(tanto los abonados como los nuevos) para sacar un total y mostrarselo en la pagina de user.php
+$consult = "SELECT SUM(total) as result FROM loans WHERE id_U1 = '$id_U'";
+$result = mysqli_query($connect, $consult);
+
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$debited = $row["result"]; //guardamos en la variable la suma total
+
+//actualizamos la nueva info(la suma total de los pretamos pero actualizada despuesde la operacion)
+$update_debited = "UPDATE users
+        SET    debited = '$debited'
+        WHERE  name_U='$NAME'";
+if(mysqli_query($connect,$update_debited)){
+} else {
+    echo "Error: " . $update_debited . "<br>" . mysqli_error($connect);
+} 
 mysqli_close($connect);
 ?>

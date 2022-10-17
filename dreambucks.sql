@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2022 a las 05:02:35
+-- Tiempo de generación: 16-10-2022 a las 22:22:56
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -56,15 +56,9 @@ CREATE TABLE `loans` (
   `id_L` int(100) NOT NULL,
   `lapses` int(50) NOT NULL,
   `quota` bigint(200) NOT NULL,
-  `due` int(100) NOT NULL
+  `due` int(100) NOT NULL,
+  `months` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `loans`
---
-
-INSERT INTO `loans` (`date`, `id_U1`, `quantity`, `interest`, `total`, `id_L`, `lapses`, `quota`, `due`) VALUES
-('2022-10-13', '3', 10000, 0, 11076, 27, 6, 1846, 0);
 
 -- --------------------------------------------------------
 
@@ -79,6 +73,16 @@ CREATE TABLE `movements` (
   `total` int(100) NOT NULL,
   `type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `movements`
+--
+
+INSERT INTO `movements` (`date`, `id_U2`, `id_M`, `total`, `type`) VALUES
+('2022-10-16', 3, 1, 1000, 'recharge'),
+('2022-10-16', 3, 2, 1000, 'recharge'),
+('2022-10-16', 3, 3, 10000, 'recharge'),
+('2022-10-16', 10, 4, 30000, 'recharge');
 
 -- --------------------------------------------------------
 
@@ -103,11 +107,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_U`, `name_U`, `password_U`, `email_U`, `debited`, `address`, `phone`, `id_A1`, `balance`) VALUES
-(2, '2', '2', 'pepe@gmail.com', 0, '2', 2, 0, 0),
-(3, 'mork', '123', '123@gAIL.COM', 706, '1', 1, 0, 14462),
-(4, 'jose', 'q', 's@gmail.com', 0, 'campos', 314104789, 0, 0),
-(5, 'josefa', 'q', 'sa@gmail.com', 209, 'campos', 314104789, 20202003, 0),
-(6, 'matias', '2', '2@ucol.mx', 995, '1', 1, 20202003, 0);
+(10, 'matias', '1', 'e@gmail.com', 0, 'naranjo', 3141010000, 20202003, 14091);
 
 
 
@@ -156,19 +156,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT de la tabla `loans`
 --
 ALTER TABLE `loans`
-  MODIFY `id_L` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_L` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `movements`
 --
 ALTER TABLE `movements`
-  MODIFY `id_M` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_M` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_U` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_U` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
