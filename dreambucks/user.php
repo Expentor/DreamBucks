@@ -46,6 +46,7 @@ $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
 <div class="advertisements">
+<h1>Prestamos</h1><br>
 <?php   
         $id = $row[0]; //guardamos su id en una variable
         $balance = $row[8]; //guardamos el saldo del usuario
@@ -59,7 +60,7 @@ while ($row = mysqli_fetch_row($result)){
         
         echo '<h4 class="text">Usted debe un total de: $'. $row[4] . "<br></h4>";  //lo que debe el usuario
         
-?></div><br><br>
+?></div>
 
 <?php
 }
@@ -177,7 +178,7 @@ $subtract_total ="UPDATE loans
 
  ?>
 <br>
- <button class="pay" href="Pay.php?id=<?php echo $row2[5]?>">Pagar</button><br> 
+ <button class="pay"><a class="pay2" href="Pay.php?id=<?php echo $row2[5]?>">Pagar</a></button><br> 
         </div>
 
 <?php

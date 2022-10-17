@@ -14,12 +14,17 @@
     width: 450px;
     border-radius: 10px;
     border: 1px solid #3C760C;
-    box-shadow: 0px 8px 32px #3C760C;
     background: #F1FFFA;
     padding: 20px;
     float: left;
     flex-direction : row;
 }
+
+.container_a:hover{
+    box-shadow: 0px 8px 32px #3C760C;
+    transition: all .3s;
+}
+
 
 .a{  
     display:inline;
@@ -49,12 +54,27 @@
     border: 1px solid #F1FFFA;
     color: black;
     text-decoration: none;
-    text-align: left;
+    text-align: center;
     border-radius: 10px;
 }
 
 .pay:hover{
-    background: rgb(64, 196, 64);
+    background: #40c440;
+    color: white;
+    transition:all .5s;
+}
+
+.pay2{
+    font-size: 16px;
+    width: 80px;
+    height: 40px;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+.pay2:hover{
+    background: #40c440;
+    color: white;
     transition:all .5s;
 }
 
@@ -67,6 +87,6 @@
 }
 
 .buttowon:hover{
-    background: rgb(64, 196, 64);
+    background: #40c440;
     transition:all .5s;
 }
