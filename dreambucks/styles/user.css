@@ -10,32 +10,55 @@
 }
 
 .container_a{
-    max-width: 35%;
+    max-width: 350px;
     height: 100%;
-    margin: 20px;
+    margin: 1em;
     padding: 20px;
     border-style: solid;
     border-color:black;
     background-color: green;
     color: white;
+    float: left;
+    flex-direction : row;
 
-
-
-    /*
-    width: 350px;
-    color: peru;
-    border-style: solid;
-    border-color:white;
-    */
-
+    
 }
 
 .a{  
     display:inline;
+    text-decoration: none;
 }
 
 .text{
     display:inline;
-    padding-top: 2000px;
+    margin-top: 10px; 
     padding-left: 20px;
+    
+}
+
+.pay{
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    width: 150px;
+    border-radius: 10px;
+}
+
+.pay:hover{
+    background: blue;
+    transition:all .5s;
+}
+
+.buttowon{
+    padding: 15px 20px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    width: 150px;
+}
+
+.buttowon:hover{
+    background: green;
+    transition:all .5s;
 }

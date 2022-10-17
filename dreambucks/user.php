@@ -150,9 +150,9 @@ $subtract_total ="UPDATE loans
 
  ?>
 <br>
- <a href="Pay.php?id=<?php echo $row2[5]?>">pagar</a><br> 
+ <a class="pay" href="Pay.php?id=<?php echo $row2[5]?>">Pagar</a><br> 
         </div>
- <br><br><br>
+
 <?php
 }
 
@@ -160,5 +160,4 @@ $subtract_total ="UPDATE loans
 ?>
 
 
-<br>
-<a href="Logout.php" class="">Cerrar Sesion</a>
+<a href="Logout.php" class="buttowon">Cerrar Sesion</a>
