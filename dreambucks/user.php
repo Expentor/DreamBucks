@@ -4,11 +4,24 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/styleHeaderUL.css">
         <link rel="stylesheet" href="./styles/user.css">
         <title>User</title>
 </head>
 <body>
-        
+
+        <header class="header">
+        <div class="container-head logo-nav-container">
+            <a href="#" class="logo">DREAMBUCKS</a>
+            <div class="menu-icon">Menú</div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="Logout.php">Cerrar Sesion</a></li>
+                </ul>
+            </nav>
+        </div>
+        </header>
+
 </body>
 </html>
 
@@ -32,20 +45,22 @@ $consult = "SELECT * FROM users WHERE name_U='$user'";
 $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
+<div class="advertisements">
 <?php   
         $id = $row[0]; //guardamos su id en una variable
         $balance = $row[8]; //guardamos el saldo del usuario
         if($balance<0){
-                echo "actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio
+                echo '<h4 class="advertencia">Actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio
                 .<br> ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion <br> <br>
-                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: " .'$' . abs($balance) . '<br>';
+                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: ' .'$' . abs($balance) . '<br></h4>';
         } else {
-                echo 'cuentas con un saldo de: $' . $row[8] . "<br>"; //el saldo del cliente
+                echo '<h4 class="text">Cuenta con un saldo de: $' . $row[8] . "<br></h4>"; //el saldo del cliente
         }
         
-        echo 'usted debe un total de: $'. $row[4] . "<br>";  //lo que debe el usuario
+        echo '<h4 class="text">Usted debe un total de: $'. $row[4] . "<br></h4>";  //lo que debe el usuario
         
-?><br><br>
+?></div><br><br>
+
 <?php
 }
 
@@ -162,7 +177,7 @@ $subtract_total ="UPDATE loans
 
  ?>
 <br>
- <a class="pay" href="Pay.php?id=<?php echo $row2[5]?>">Pagar</a><br> 
+ <button class="pay" href="Pay.php?id=<?php echo $row2[5]?>">Pagar</button><br> 
         </div>
 
 <?php
@@ -185,7 +200,3 @@ echo "Error: " . $update_debited . "<br>" . mysqli_error($connect);
 }    
 
 ?>
-
-
-<br>
-<a href="Logout.php" class="">Cerrar Sesion</a>

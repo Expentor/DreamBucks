@@ -10,18 +10,15 @@
 }
 
 .container_a{
-    max-width: 350px;
-    height: 100%;
-    margin: 1em;
+    margin: 20px 25px 20px 125px;
+    width: 450px;
+    border-radius: 10px;
+    border: 1px solid #3C760C;
+    box-shadow: 0px 8px 32px #3C760C;
+    background: #F1FFFA;
     padding: 20px;
-    border-style: solid;
-    border-color:black;
-    background-color: green;
-    color: white;
     float: left;
     flex-direction : row;
-
-    
 }
 
 .a{  
@@ -29,24 +26,35 @@
     text-decoration: none;
 }
 
+.advertisements{
+    padding: 150px 10% 20px;
+}
+
+.Advertencia{
+    color: white;
+    background-color: red;
+    display:inline;
+    padding: 2rem 0;
+}
 .text{
     display:inline;
-    margin-top: 10px; 
-    padding-left: 20px;
-    
+    padding: 2rem 0;
 }
 
 .pay{
-    padding: 10px 15px;
-    color: white;
+    font-size: 16px;
+    width: 80px;
+    height: 40px;
+    background:  #F1FFFA;
+    border: 1px solid #F1FFFA;
+    color: black;
     text-decoration: none;
-    text-align: center;
-    width: 150px;
+    text-align: left;
     border-radius: 10px;
 }
 
 .pay:hover{
-    background: blue;
+    background: rgb(64, 196, 64);
     transition:all .5s;
 }
 
@@ -59,6 +67,6 @@
 }
 
 .buttowon:hover{
-    background: green;
+    background: rgb(64, 196, 64);
     transition:all .5s;
 }
