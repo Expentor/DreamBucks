@@ -12,7 +12,7 @@
 
         <header class="header">
         <div class="container-head logo-nav-container">
-            <a href="#" class="logo">DREAMBUCKS</a>
+            <a class="logo">DREAMBUCKS</a>
             <div class="menu-icon">Menú</div>
             <nav class="navigation">
                 <ul>
@@ -51,9 +51,12 @@ while ($row = mysqli_fetch_row($result)){
         $id = $row[0]; //guardamos su id en una variable
         $balance = $row[8]; //guardamos el saldo del usuario
         if($balance<0){
-                echo '<h4 class="advertencia">Actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio
-                .<br> ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion <br> <br>
-                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: ' .'$' . abs($balance) . '<br></h4>';
+                echo '
+                <div class="alert"><h1>⚠️</h1></div>
+                <div class="bad">
+                <h4>Actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio.<h4>
+                <h4>Ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion
+                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: ' .'$' . abs($balance) . '<br></h4></div>';
         } else {
                 echo '<h4 class="text">Cuenta con un saldo de: $' . $row[8] . "<br></h4>"; //el saldo del cliente
         }
@@ -152,9 +155,11 @@ $subtract_total ="UPDATE loans
         }
 
         if($due > $quota){
-
+                ?>
+                <div class="alert"><h1>⚠️</h1></div>
+                <div class="bad"> <?php
                 echo '<p class="a">Usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta </p><br> ';
-
+                ?></div><?php
    
    
                 if(mysqli_query($connect,$subtract_balance)){ //ejecutamos la resta de su cuenta
