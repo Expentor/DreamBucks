@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.4deb1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2022 a las 22:22:56
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.1.2
+-- Servidor: localhost:3306
+-- Tiempo de generación: 21-10-2022 a las 19:14:01
+-- Versión del servidor: 10.6.10-MariaDB-1
+-- Versión de PHP: 8.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,9 +56,17 @@ CREATE TABLE `loans` (
   `id_L` int(100) NOT NULL,
   `lapses` int(50) NOT NULL,
   `quota` bigint(200) NOT NULL,
-  `due` int(100) NOT NULL,
-  `months` int(100) NOT NULL
+  `due` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `loans`
+--
+
+INSERT INTO `loans` (`date`, `id_U1`, `quantity`, `interest`, `total`, `id_L`, `lapses`, `quota`, `due`) VALUES
+('2022-10-19', '7', 1000, 3, 923, 28, 6, 185, 0),
+('2022-10-19', '7', 1000, 3, 707, 29, 3, 354, 0),
+('2022-10-19', '7', 1000, 3, 1108, 30, 6, 185, 185);
 
 -- --------------------------------------------------------
 
@@ -79,10 +87,8 @@ CREATE TABLE `movements` (
 --
 
 INSERT INTO `movements` (`date`, `id_U2`, `id_M`, `total`, `type`) VALUES
-('2022-10-16', 3, 1, 1000, 'recharge'),
-('2022-10-16', 3, 2, 1000, 'recharge'),
-('2022-10-16', 3, 3, 10000, 'recharge'),
-('2022-10-16', 10, 4, 30000, 'recharge');
+('2022-10-19', 7, 1, 1000, 'recharge'),
+('2022-10-21', 7, 2, 9000, 'recharge');
 
 -- --------------------------------------------------------
 
@@ -95,19 +101,20 @@ CREATE TABLE `users` (
   `name_U` varchar(60) NOT NULL,
   `password_U` varchar(200) NOT NULL,
   `email_U` varchar(100) NOT NULL,
-  `debited` int(50) NOT NULL,
-  `address` varchar(200) NOT NULL,
+  `debited` int(50) DEFAULT NULL,
+  `address_U` varchar(200) NOT NULL,
   `phone` bigint(13) NOT NULL,
   `id_A1` int(100) NOT NULL,
-  `balance` int(100) NOT NULL
+  `balance` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_U`, `name_U`, `password_U`, `email_U`, `debited`, `address`, `phone`, `id_A1`, `balance`) VALUES
-(10, 'matias', '1', 'e@gmail.com', 0, 'naranjo', 3141010000, 20202003, 14091);
+INSERT INTO `users` (`id_U`, `name_U`, `password_U`, `email_U`, `debited`, `address_U`, `phone`, `id_A1`, `balance`) VALUES
+(3, 'mork', '123', '123@gAIL.COM', 0, '1', 1, 0, 0),
+(7, 'NEGRO', '123', 'negro@gmail.com', 2738, '1', 1, 20202003, 8461);
 
 --
 -- Índices para tablas volcadas
@@ -154,19 +161,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT de la tabla `loans`
 --
 ALTER TABLE `loans`
-  MODIFY `id_L` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_L` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `movements`
 --
 ALTER TABLE `movements`
-  MODIFY `id_M` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_M` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_U` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_U` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
