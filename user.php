@@ -95,7 +95,7 @@ while ($row2 = mysqli_fetch_row($result)){
  $iterator = $row2[9]; //el iterador que ayuda a que cada mes no se ejecute 2 veces la misma accion o peticion
  $total = $row2[4]; //el total del prestamo
 
- $n = 3;
+ $n = 0;
  $loan = date_create($dateLoan);//  creamos la fecha de la creacion del prestamo obtenida de la base de datos
  $date = date("Y-m-d"); //esta es la fecha que sera personalizada 
  $custom_date = strtotime('+'. $n . 'months', strtotime($date)); // AQUI SE MODIFICA LA FECHA, esta fecha se personaliza por intenciones de la presentacion, (demostrar que sucede si avanzamos en el tiempo)

@@ -29,10 +29,9 @@ if(!$consultId){
     $consultE = mysqli_query($connect, $consultE);
     $consultE = mysqli_fetch_array($consultE);
 
-
     // insertamos en la base de datos la informacion, los espacios en blanco son datos que aun no se tienen
     if(!$consultE){
-    $sql = "INSERT INTO users VALUES ('', '$NAME', '$PASSWORD', '$EMAIL','','$ADDRESS', '$PHONE', '$ADMIN', '')";    
+    $sql = "INSERT INTO users (name_U, password_U, email_U,address_U, phone, id_A1) VALUES ('$NAME', '$PASSWORD', '$EMAIL','$ADDRESS', '$PHONE','$ADMIN')";    
     }else {
     echo "<script>
     alert('email existente');
@@ -48,7 +47,7 @@ if(!$consultId){
     
 } else {
     echo "<script>
-    alert('usuario existente');
+    alert('usuario existente')
     window.location = 'Register_U.php';
     </script>";
 }

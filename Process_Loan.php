@@ -31,7 +31,6 @@ while ($row = mysqli_fetch_row($result)){
 $totalDebt = $QUANTIFY + $due;
 //obtenemos fecha actual
 $DATE = date('Y-m-d');
-
 // verificamos que el nombre del usuario existe al igual que su contraseña
 $consult_U = "SELECT name_U
             FROM users
@@ -48,14 +47,13 @@ if($totalDebt>=100000){
         if($consult_U){
         // insertamos en la base de datos la informacion, los espacios en blanco son datos que aun no se tienen
         if(!$consultE){
-        $sql = "INSERT INTO loans VALUES ('$DATE', '$id_U', '$QUANTIFY','3','$total', '', '$LAPSES','$quota', '$quota','0')";    
+        $sql = "INSERT INTO loans (date, id_U1, quantity, interest, total,lapses,quota,due) VALUES ('$DATE', '$id_U', '$QUANTIFY','3','$total', '$LAPSES','$quota', '$quota')";    
         }else {
         echo "<script>
         alert('error');
         window.location = 'CreateLoan.php';
         </script>";
         }
-        
         if(mysqli_query($connect,$sql)){
             header("location: admin.php");
         } else {
