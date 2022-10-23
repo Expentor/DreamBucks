@@ -14,7 +14,7 @@ while ($row = mysqli_fetch_row($result)){
 ?>
 <?php   
         $id_U = $row[0]; //guardamos su id en una variable
-        $balance = $row[9];
+        $balance = $row[8];
 ?><br><br>
 <?php
 }
@@ -23,7 +23,7 @@ while ($row = mysqli_fetch_row($result)){
 $DATE = date('Y-m-d');
 
 // el saldo actual mas el nuevo
-$NewBalance = $balance + $TOTAL;
+$Nbalance = $balance + $TOTAL;
 
 // verificamos que el nombre del usuario existe al igual que su contraseña
 $consult_U = "SELECT name_U
@@ -38,7 +38,7 @@ $consult_U = mysqli_fetch_array($consult_U);
             if(!$consultE){
             $sql = "INSERT INTO movements (date, id_U2, total, type)VALUES ('$DATE', '$id_U','$TOTAL', 'recharge')";
             $sql2 = "UPDATE users
-                    SET    balance = '$NewBalance'
+                    SET    balance = '$Nbalance'
                     WHERE  id_U  = '$id_U'";    
             }else {
             echo "<script>

@@ -24,6 +24,7 @@ while ($row = mysqli_fetch_row($result)){
 <?php   
         $due = $row[4]; //lo que debe el usuario
         $id_U = $row[0]; //guardamos su id en una variable
+        $balance = $row[8];
 ?><br><br>
 <?php
 }
@@ -38,9 +39,9 @@ $consult_U = "SELECT name_U
 $consult_U = mysqli_query($connect, $consult_U); 
 $consult_U = mysqli_fetch_array($consult_U);
 
-if($totalDebt>=100000){
+if($totalDebt>=100000 or $balance<0){
     echo "<script>
-    alert('este usuario excedio limite');
+    alert('este usuario cuenta con saldo negativo o exedio el limite de prestamos');
     window.location = 'admin.php';
     </script>";
 }else{
