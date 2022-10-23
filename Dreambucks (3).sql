@@ -6,7 +6,6 @@
 -- Tiempo de generación: 22-10-2022 a las 04:48:39
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -26,7 +25,7 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `admins`
 --
-
+use dreambucks;
 CREATE TABLE `admins` (
   `id_A` int(100) NOT NULL, 
   `num-trab` int(100) NOT NULL,
