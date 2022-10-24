@@ -1,3 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/styleHeaderUL.css">
+        <link rel="stylesheet" href="./styles/styleUser.css">
+        <title>User</title>
+</head>
+<body>
+
+        <header class="header">
+        <div class="container-head logo-nav-container">
+            <a class="logo">DREAMBUCKS</a>
+            <div class="menu-icon">Menú</div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="Logout.php">Cerrar Sesion</a></li>
+                </ul>
+            </nav>
+        </div>
+        </header>
+
+</body>
+</html>
+
 <?php
 include("ConnectDB.php");
 // obtenemos el nombre de usuario con la variable global SESSION
@@ -18,20 +45,26 @@ $consult = "SELECT * FROM users WHERE name_U='$user'";
 $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
+<div class="advertisements">
+<h1>Prestamos</h1><br>
 <?php   
         $id = $row[0]; //guardamos su id en una variable
         $balance = $row[8]; //guardamos el saldo del usuario
         if($balance<0){
-                echo "actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio
-                .<br> ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion <br> <br>
-                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: " .'$' . abs($balance) . '<br>';
+                echo '
+                <div class="alert"><h1>⚠️</h1></div>
+                <div class="bad">
+                <h4>Actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio.<h4>
+                <h4>Ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion
+                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: ' .'$' . abs($balance) . '<br></h4></div>';
         } else {
-                echo 'cuentas con un saldo de: $' . $row[8] . "<br>"; //el saldo del cliente
+                echo '<h4 class="text">Cuenta con un saldo de: $' . $row[8] . "<br></h4>"; //el saldo del cliente
         }
         
-        echo 'usted debe un total de: $'. $row[4] . "<br>";  //lo que debe el usuario
+        echo '<h4 class="text">Usted debe un total de: $'. $row[4] . "<br></h4>";  //lo que debe el usuario
         
-?><br><br>
+?></div>
+
 <?php
 }
 
@@ -40,13 +73,18 @@ $consult = "SELECT * FROM loans WHERE id_U1='$id'";
 $result  = mysqli_query($connect, $consult);
 while ($row2 = mysqli_fetch_row($result)){
 ?>
- <?php  
-   echo 'fecha del prestamo: '                  .$row2[0] .      "<br>";
-   echo 'cantidad prestada: '                   .$row2[2] .      "<br>" ;
-   echo 'el porcentaje de interes fue del: '    .$row2[3] . '%' ."<br>";
-   echo 'faltante de pagar por este prestamo: $'.$row2[4] .      "<br>";
-   echo 'lapsos solicitados: '                  .$row2[6] .      "<br>";
- 
+
+<div class="container_a">
+   <?php   
+   echo '<p class="a">Fecha del prestamo: </p>'                 .$row2[0] .      "<br>";
+   echo '<p class="a">Cantidad prestada: </p>'                  .$row2[2] .      "<br>" ;
+   echo '<p class="a">El porcentaje de interes fue del: </p>'   .$row2[3] . '%' ."<br>";
+   echo '<p class="a">Faltante de pagar por este prestamo: </p>'.$row2[4] .      "<br>";
+   echo '<p class="a">Lapsos solicitados: </p>'                 .$row2[6] .      "<br>";
+   ?>
+
+<?php  
+
  //DECLARAR variables provenientes de la tabla loans
  $lapses = $row2[6];    // guardo los lapsos en esta variable
  $dateLoan = $row2[0]; //guardamos en una variable la fecha en la que se hizo el prestamo 
@@ -117,8 +155,13 @@ $subtract_total ="UPDATE loans
         }
 
         if($due > $quota){
-                echo 'usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta<br> ';
-
+                ?>
+                <div class="alert"><h1>⚠️</h1></div>
+                <div class="bad"> <?php
+                echo '<p class="a">Usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta </p><br> ';
+                ?></div><?php
+   
+   
                 if(mysqli_query($connect,$subtract_balance)){ //ejecutamos la resta de su cuenta
                 } else {
                         echo "Error: " . $subtract_balance . "<br>" . mysqli_error($connect);
@@ -132,14 +175,17 @@ $subtract_total ="UPDATE loans
                         echo "Error: " . $subtract_total . "<br>" . mysqli_error($connect);
                         }      
         }
-        echo 'ultima fecha para pagar la cuota actual: ' . date('Y-m-d',$dayPay) . "<br>";
-        echo 'este mes usted tiene que pagar esta cantidad : ' . $row2[8] . '<br>';
+
+           
+        echo '<p class="a">Ultima fecha para pagar la cuota actual: </p>' . date('Y-m-d',$dayPay) . "<br>";
+        echo '<p class="a">Este mes usted tiene que pagar esta cantidad : </p>' . $row2[8] . '<br>';
         echo  $interval->format('%m') . '/////' . $iterator;
+
  ?>
 <br>
- <a href="Pay.php?id=<?php echo $row2[5]?>">pagar</a><br> 
+ <button class="pay"><a class="pay2" href="Pay.php?id=<?php echo $row2[5]?>">Pagar</a></button><br> 
+        </div>
 
- <br><br><br>
 <?php
 
 }
@@ -160,10 +206,3 @@ echo "Error: " . $update_debited . "<br>" . mysqli_error($connect);
 }    
 
 ?>
-
-
-<br>
-<a href="Logout.php" class="">Cerrar Sesion</a>
-
-
-

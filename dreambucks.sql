@@ -129,6 +129,8 @@ INSERT INTO `users` (`id_U`, `name_U`, `password_U`, `email_U`, `debited`, `addr
 (7, 'NEGRO', '123', 'negro@gmail.com', 2738, '1', 1, 20202003, 8461),
 (8, 'adair', '1', 'mtirado0@ucol.mx', 12727, '1724 hamburg road', 523141010990, 20202003, 10000);
 
+
+
 --
 -- Índices para tablas volcadas
 --

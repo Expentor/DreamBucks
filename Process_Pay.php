@@ -95,13 +95,13 @@ if($deposit < $total && $deposit <= $due){
         }                 
     }else{
         echo "<script>
-        alert('ingresaste un cantidad de dinero que no tienes, por favor vuelve a intentarlo');
+        alert('Ingresaste un cantidad de dinero que no tienes, por favor vuelve a intentarlo');
         window.location =Pay.php;
         </script>";
     }
 }else{
     echo "<script>
-    alert('ingresaste un cantidad mayor a la cuota que debes este mes, verifica  y vuelve a intentarlo');
+    alert('Ingresaste un cantidad mayor a la cuota que debes este mes, verifica  y vuelve a intentarlo');
     window.location =Pay.php;
     </script>";
 }    
