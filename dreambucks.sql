@@ -1,12 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.4deb1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 21-10-2022 a las 19:14:01
--- Versión del servidor: 10.6.10-MariaDB-1
--- Versión de PHP: 8.1.7
-
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-10-2022 a las 04:48:39
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 8.1.2
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -22,12 +21,14 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+
 --
 -- Estructura de tabla para la tabla `admins`
 --
-
+use dreambucks;
 CREATE TABLE `admins` (
-  `id_A` int(100) NOT NULL,
+  `id_A` int(100) NOT NULL, 
+  `num-trab` int(100) NOT NULL,
   `name_A` varchar(50) NOT NULL,
   `password_A` varchar(200) NOT NULL,
   `email_A` varchar(100) NOT NULL
@@ -63,10 +64,11 @@ CREATE TABLE `loans` (
 -- Volcado de datos para la tabla `loans`
 --
 
-INSERT INTO `loans` (`date`, `id_U1`, `quantity`, `interest`, `total`, `id_L`, `lapses`, `quota`, `due`) VALUES
-('2022-10-19', '7', 1000, 3, 923, 28, 6, 185, 0),
-('2022-10-19', '7', 1000, 3, 707, 29, 3, 354, 0),
-('2022-10-19', '7', 1000, 3, 1108, 30, 6, 185, 185);
+INSERT INTO `loans` (`date`, `id_U1`, `quantity`, `interest`, `total`, `id_L`, `lapses`, `quota`, `due`, `months`) VALUES
+('2022-10-19', '7', 1000, 3, 923, 28, 6, 185, 0, 0),
+('2022-10-19', '7', 1000, 3, 707, 29, 3, 354, 0, 0),
+('2022-10-19', '7', 1000, 3, 1108, 30, 6, 185, 185, 0),
+('2022-10-22', '8', 12000, 3, 12727, 31, 3, 4242, 4242, 1);
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,8 @@ CREATE TABLE `movements` (
 
 INSERT INTO `movements` (`date`, `id_U2`, `id_M`, `total`, `type`) VALUES
 ('2022-10-19', 7, 1, 1000, 'recharge'),
-('2022-10-21', 7, 2, 9000, 'recharge');
+('2022-10-21', 7, 2, 9000, 'recharge'),
+('2022-10-22', 8, 3, 10000, 'recharge');
 
 -- --------------------------------------------------------
 
@@ -99,6 +102,8 @@ INSERT INTO `movements` (`date`, `id_U2`, `id_M`, `total`, `type`) VALUES
 CREATE TABLE `users` (
   `id_U` int(100) NOT NULL,
   `name_U` varchar(60) NOT NULL,
+  `lastname1_U` varchar(60) NOT NULL,
+  `lastname2_U` varchar(60) NOT NULL,
   `password_U` varchar(200) NOT NULL,
   `email_U` varchar(100) NOT NULL,
   `debited` int(50) DEFAULT NULL,
@@ -108,13 +113,21 @@ CREATE TABLE `users` (
   `balance` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE TABLE `movements` (
+  `date` date NOT NULL,
+  `id_C1` varchar(100) NOT NULL,
+  `quantity` int(100) NOT NULL,
+  `id_M` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id_U`, `name_U`, `password_U`, `email_U`, `debited`, `address_U`, `phone`, `id_A1`, `balance`) VALUES
 (3, 'mork', '123', '123@gAIL.COM', 0, '1', 1, 0, 0),
-(7, 'NEGRO', '123', 'negro@gmail.com', 2738, '1', 1, 20202003, 8461);
+(7, 'NEGRO', '123', 'negro@gmail.com', 2738, '1', 1, 20202003, 8461),
+(8, 'adair', '1', 'mtirado0@ucol.mx', 12727, '1724 hamburg road', 523141010990, 20202003, 10000);
 
 --
 -- Índices para tablas volcadas
@@ -161,19 +174,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT de la tabla `loans`
 --
 ALTER TABLE `loans`
-  MODIFY `id_L` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_L` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `movements`
 --
 ALTER TABLE `movements`
-  MODIFY `id_M` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_M` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_U` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_U` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
