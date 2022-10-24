@@ -24,6 +24,7 @@ while ($row = mysqli_fetch_row($result)){
 <?php   
         $due = $row[4]; //lo que debe el usuario
         $id_U = $row[0]; //guardamos su id en una variable
+        $balance = $row[8];
 ?><br><br>
 <?php
 }
@@ -38,16 +39,16 @@ $consult_U = "SELECT name_U
 $consult_U = mysqli_query($connect, $consult_U); 
 $consult_U = mysqli_fetch_array($consult_U);
 
-if($totalDebt>=100000){
+if($totalDebt>=100000 or $balance<0){
     echo "<script>
-    alert('este usuario excedio limite');
+    alert('este usuario cuenta con saldo negativo o exedio el limite de prestamos');
     window.location = 'admin.php';
     </script>";
 }else{
         if($consult_U){
         // insertamos en la base de datos la informacion, los espacios en blanco son datos que aun no se tienen
         if(!$consultE){
-        $sql = "INSERT INTO loans (date, id_U1, quantity, interest, total,lapses,quota,due) VALUES ('$DATE', '$id_U', '$QUANTIFY','3','$total', '$LAPSES','$quota', '$quota')";    
+        $sql = "INSERT INTO loans (date, id_U1, quantity, interest, total,lapses,quota,due,months) VALUES ('$DATE', '$id_U', '$QUANTIFY','3','$total', '$LAPSES','$quota', '$quota', '0')";    
         }else {
         echo "<script>
         alert('error');
