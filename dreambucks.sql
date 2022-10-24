@@ -6,7 +6,6 @@
 -- Tiempo de generación: 22-10-2022 a las 04:48:39
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -26,9 +25,10 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `admins`
 --
-
+use dreambucks;
 CREATE TABLE `admins` (
-  `id_A` int(100) NOT NULL,
+  `id_A` int(100) NOT NULL, 
+  `num-trab` int(100) NOT NULL,
   `name_A` varchar(50) NOT NULL,
   `password_A` varchar(200) NOT NULL,
   `email_A` varchar(100) NOT NULL
@@ -102,6 +102,8 @@ INSERT INTO `movements` (`date`, `id_U2`, `id_M`, `total`, `type`) VALUES
 CREATE TABLE `users` (
   `id_U` int(100) NOT NULL,
   `name_U` varchar(60) NOT NULL,
+  `lastname1_U` varchar(60) NOT NULL,
+  `lastname2_U` varchar(60) NOT NULL,
   `password_U` varchar(200) NOT NULL,
   `email_U` varchar(100) NOT NULL,
   `debited` int(50) DEFAULT NULL,
@@ -111,6 +113,13 @@ CREATE TABLE `users` (
   `balance` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE TABLE `movements` (
+  `date` date NOT NULL,
+  `id_C1` varchar(100) NOT NULL,
+  `quantity` int(100) NOT NULL,
+  `id_M` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Volcado de datos para la tabla `users`
 --
