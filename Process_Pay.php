@@ -18,7 +18,7 @@ $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
 <?php 
-    $total= $row[4];// guardamos en una variable lo que le falta por pagar al usuario 
+    $total= $row[5];// guardamos en una variable lo que le falta por pagar al usuario 
     $id_U1 = $row[1]; //guardamos el id del usuario
     $due = $row[8]; //lo que el usuario debe pagar este mes
 ?>
@@ -31,7 +31,7 @@ $result  = mysqli_query($connect, $consult);
 while ($row2 = mysqli_fetch_row($result)){
 ?>
 <?php 
-    $balance = $row2[8]; 
+    $balance = $row2[10]; 
 ?>
 <?php
 }

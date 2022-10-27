@@ -48,7 +48,7 @@ if($totalDebt>=100000 or $balance<0){
         if($consult_U){
         // insertamos en la base de datos la informacion, los espacios en blanco son datos que aun no se tienen
         if(!$consultE){
-        $sql = "INSERT INTO loans (date, id_U1, quantity, interest, total,lapses,quota,due,months) VALUES ('$DATE', '$id_U', '$QUANTIFY','3','$total', '$LAPSES','$quota', '$quota', '0')";    
+        $sql = "INSERT INTO loans (date, id_U1, quantify, interest, total,lapses,quota,due,months,balance,debited) VALUES ('$DATE', '$id_U', '$QUANTIFY','3','$total', '$LAPSES','$quota', '$quota', '0', '0', '0')";    
         }else {
         echo "<script>
         alert('error');

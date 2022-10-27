@@ -49,7 +49,7 @@ while ($row = mysqli_fetch_row($result)){
 <h1>Prestamos</h1><br>
 <?php   
         $id = $row[0]; //guardamos su id en una variable
-        $balance = $row[8]; //guardamos el saldo del usuario
+        $balance = $row[10]; //guardamos el saldo del usuario
         if($balance<0){
                 echo '
                 <div class="alert"><h1>⚠️</h1></div>
@@ -58,10 +58,10 @@ while ($row = mysqli_fetch_row($result)){
                 <h4>Ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion
                 el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: ' .'$' . abs($balance) . '<br></h4></div>';
         } else {
-                echo '<h4 class="text">Cuenta con un saldo de: $' . $row[8] . "<br></h4>"; //el saldo del cliente
+                echo '<h4 class="text">Cuenta con un saldo de: $' . $row[10] . "<br></h4>"; //el saldo del cliente
         }
         
-        echo '<h4 class="text">Usted debe un total de: $'. $row[4] . "<br></h4>";  //lo que debe el usuario
+        echo '<h4 class="text">Usted debe un total de: $'. $row[6] . "<br></h4>";  //lo que debe el usuario
         
 ?></div>
 
@@ -76,10 +76,10 @@ while ($row2 = mysqli_fetch_row($result)){
 
 <div class="container_a">
    <?php   
-   echo '<p class="a">Fecha del prestamo: </p>'                 .$row2[0] .      "<br>";
-   echo '<p class="a">Cantidad prestada: </p>'                  .$row2[2] .      "<br>" ;
-   echo '<p class="a">El porcentaje de interes fue del: </p>'   .$row2[3] . '%' ."<br>";
-   echo '<p class="a">Faltante de pagar por este prestamo: </p>'.$row2[4] .      "<br>";
+   echo '<p class="a">Fecha del prestamo: </p>'                 .$row2[2] .      "<br>";
+   echo '<p class="a">Cantidad prestada: </p>'                  .$row2[3] .      "<br>" ;
+   echo '<p class="a">El porcentaje de interes fue del: </p>'   .$row2[4] . '%' ."<br>";
+   echo '<p class="a">Faltante de pagar por este prestamo: </p>'.$row2[8] .      "<br>";
    echo '<p class="a">Lapsos solicitados: </p>'                 .$row2[6] .      "<br>";
    ?>
 
@@ -87,13 +87,13 @@ while ($row2 = mysqli_fetch_row($result)){
 
  //DECLARAR variables provenientes de la tabla loans
  $lapses = $row2[6];    // guardo los lapsos en esta variable
- $dateLoan = $row2[0]; //guardamos en una variable la fecha en la que se hizo el prestamo 
+ $dateLoan = $row2[2]; //guardamos en una variable la fecha en la que se hizo el prestamo 
  $id_U = $row2[1]; //identificacion del usuario
- $idloan = $row2[5]; //identificacion del prestamo
+ $idloan = $row2[0]; //identificacion del prestamo
  $quota = $row2[7]; //la cuota que se pagara cada mes
  $due = $row2[8]; //lo que actualmente debe de este prestamo el usuario
  $iterator = $row2[9]; //el iterador que ayuda a que cada mes no se ejecute 2 veces la misma accion o peticion
- $total = $row2[4]; //el total del prestamo
+ $total = $row2[5]; //el total del prestamo
 
  $n = 0;
  $loan = date_create($dateLoan);//  creamos la fecha de la creacion del prestamo obtenida de la base de datos
@@ -180,11 +180,12 @@ $subtract_total ="UPDATE loans
         echo '<p class="a">Ultima fecha para pagar la cuota actual: </p>' . date('Y-m-d',$dayPay) . "<br>";
         echo '<p class="a">Este mes usted tiene que pagar esta cantidad : </p>' . $row2[8] . '<br>';
         echo  $interval->format('%m') . '/////' . $iterator;
-
- ?>
+        
+        ?>
 <br>
- <button class="pay"><a class="pay2" href="Pay.php?id=<?php echo $row2[5]?>">Pagar</a></button><br> 
-        </div>
+ <button class="pay"><a class="pay2" href="Pay.php?id=<?php echo $row2[0]?>">Pagar</a></button><br> 
+ <button class="pay"><a class="pay2" href="tabla.php?id=<?php echo $row2[0]?>">mostrar tabla de amortizacion</a></button><br> 
+</div>
 
 <?php
 

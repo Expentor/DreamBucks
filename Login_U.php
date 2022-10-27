@@ -63,7 +63,7 @@
                     <input type="text" name="name" pattern="[a-zA-Z0-9]+" maxlength="8" placeholder="Ingrese su Usuario" id="name" required>
     
                     <label for="password">Contraseña</label>
-                    <input type="text" name="password" placeholder="Ingrese Contraseña" id="password" required>
+                    <input type="password" name="password" placeholder="Ingrese Contraseña" id="password" required>
 
                     <button type="submit" class="enter" name="enviar" value="Login_U" >Iniciar</button>
                     <form>

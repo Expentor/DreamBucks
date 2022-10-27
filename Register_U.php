@@ -3,7 +3,13 @@
         <form method="post" action="CreateUser.php">
         <h5>Registrate</h5>
         <label for="name">Ingresa su nombre:</label>
-        <input class="" type="text" name="name" pattern="[a-zA-Z0-9]+" maxlength="8" placeholder="nombre" id="name" required>
+        <input class="" type="text" name="name" pattern="[a-zA-Z0-9]+" placeholder="nombre" id="name" required>
+
+        <label for="lastname1">Ingresa su primer apellido:</label>
+        <input class="" type="text" name="lastname1" pattern="[a-zA-Z0-9]+" placeholder="apellido paterno" id="lastname1" required>
+
+        <label for="lastname2">Ingresa su segundo apellido:</label>
+        <input class="" type="text" name="lastname2" pattern="[a-zA-Z0-9]+" placeholder="apellido materno" id="lastname2" required>
 
         <label for="email">Ingresa su correo electrónico:</label>
         <input class="" type="email" name="email" placeholder="Correo electrónico" id="email" required>
