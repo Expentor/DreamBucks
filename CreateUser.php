@@ -12,6 +12,8 @@ $ADDRESS =$_POST["address"];
 $PHONE =$_POST["phone"];
 $LASTNAME1 =$_POST["lastname1"];
 $LASTNAME2 =$_POST["lastname2"];
+$DEBITED= 0;
+$BALANCE=0;
 
 // limpiamos codigo para evitar inyecciones
 $passwordHash = password_hash($PASSWORD, PASSWORD_BCRYPT); 
@@ -33,7 +35,7 @@ if(!$consultId){
 
     // insertamos en la base de datos la informacion, los espacios en blanco son datos que aun no se tienen
     if(!$consultE){
-    $sql = "INSERT INTO users (name_U, lastname1_U, lastname2_U, password_U, email_U,address_U, phone, id_A1) VALUES ('$NAME', '$LASTNAME1', '$LASTNAME2', '$PASSWORD', '$EMAIL','$ADDRESS', '$PHONE','$ADMIN')";    
+    $sql = "INSERT INTO users (name_U, lastname1_U, lastname2_U, password_U, email_U, debited, address_U, phone, id_A1, balance) VALUES ('$NAME', '$LASTNAME1', '$LASTNAME2', '$PASSWORD', '$EMAIL','$BALANCE', '$ADDRESS', '$PHONE','$ADMIN','$DEBITED')";    
     }else {
     echo "<script>
     alert('email existente');
