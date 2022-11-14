@@ -14,7 +14,7 @@ while ($row = mysqli_fetch_row($result)){
 ?>
 <?php   
         $id_U = $row[0]; //guardamos su id en una variable
-        $balance = $row[9];
+        $balance = $row[11];
 ?><br><br>
 <?php
 }
@@ -39,6 +39,7 @@ $consult_U = mysqli_fetch_array($consult_U);
             $sql2 = "UPDATE users
                     SET    balance = '$NewBalance'
                     WHERE  id_U  = '$id_U'";    
+
             }else {
             echo "<script>
             alert('error');
