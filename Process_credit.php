@@ -35,7 +35,6 @@ $consult_U = mysqli_fetch_array($consult_U);
 
         if($consult_U){
         // insertamos en la base de datos la informacion, los espacios en blanco son datos que aun no se tienen
-            if(!$consultE){
             $sql = "INSERT INTO movements (date, id_U2, total, type)VALUES ('$DATE', '$id_U','$TOTAL', 'recharge')";
             $sql2 = "UPDATE users
                     SET    balance = '$NewBalance'
@@ -55,10 +54,9 @@ $consult_U = mysqli_fetch_array($consult_U);
                     header("location: admin.php");
                 } else {
                     echo "Error: " . $sql2 . "<br>" . mysqli_error($connect);
-                } 
-        } else {
+                }  {
             echo "<script>
-            alert('usuario existente');
+            alert('usuario inexistente');
             window.location = 'Credit_Recharge.php';
             </script>";
         }

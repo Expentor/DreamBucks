@@ -13,7 +13,7 @@
         <header class="header">
         <div class="container-head logo-nav-container">
             <a class="logo">DREAMBUCKS</a>
-            <div class="menu-icon">Menú</div>
+            <div class="menu-icon">Cerrar Sesion</div>
             <nav class="navigation">
                 <ul>
                     <li><a href="Logout.php">Cerrar Sesion</a></li>
@@ -182,10 +182,16 @@ $subtract_total ="UPDATE loans
         echo  $interval->format('%m') . '/////' . $iterator;
         
         ?>
+
+        
 <br>
- <button class="pay"><a class="pay2" href="Pay.php?id=<?php echo $row2[0]?>">Pagar</a></button><br> 
- <button class="pay"><a class="pay2" href="tabla.php?id=<?php echo $row2[0]?>">mostrar tabla de amortizacion</a></button><br> 
+<!--
+<button class="pay">Prueba</button><br> 
+-->
+<button class="pay" onclick="location.href='Pay.php?id=<?php echo $row2[0]?>'">Pagar</button><br> 
+<button class="pay" onclick="location.href='tabla.php?id=<?php echo $row2[0]?>'">Mostrar tabla de amortizacion</a><br> 
 </div>
+
 
 <?php
 

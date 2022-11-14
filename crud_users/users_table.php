@@ -4,7 +4,7 @@ require "../ConnectDB.php";
 
 session_start();
 
-$clients = $conn->query("SELECT * FROM users");
+$clients = $connect->query("SELECT * FROM users");
 
 ?>
 <!DOCTYPE html>
