@@ -187,8 +187,14 @@ $subtract_total ="UPDATE loans
 <br>
 <!--
 <button class="pay">Prueba</button><br> 
--->
 <button class="pay" onclick="location.href='Pay.php?id=<?php echo $row2[0]?>'">Pagar</button><br> 
+-->
+<form method="post" action="Process_Pay.php?id=<?php echo  $row2[0]?>">
+        <label for="pay">Ingresa cantidad:</label>
+        <input class="" type="text" name="pay" placeholder="dinero" id="pay" required>
+        
+        <input class="buttons" type="submit" name="" value="Ingresar">
+</form>
 <button class="pay" onclick="location.href='tabla.php?id=<?php echo $row2[0]?>'">Mostrar tabla de amortizacion</a><br> 
 </div>
 
