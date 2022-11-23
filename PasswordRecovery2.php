@@ -1,5 +1,5 @@
 <?php
-include("ConnectDB.php");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 // codigo para enviar al correo del usuario su password, ojo no la puede cambiar solo recordarla(funciona solo en hosting)
 $EMAIL= $_POST['txtcorreo'];
 
