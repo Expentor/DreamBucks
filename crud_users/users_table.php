@@ -4,7 +4,7 @@ require "../ConnectDB.php";
 
 session_start();
 
-$clients = $connect->query("SELECT * FROM users");
+$clients = $conn->query("SELECT * FROM users WHERE id_A1 = {$_SESSION['id_A']}");
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ $clients = $connect->query("SELECT * FROM users");
       <div class="col-md-4 mx-auto">
         <div class="card card-body text-center">
         <p>Todavia no tienes ningun cliente</p>
-        <a href="CreateUser.php">Agrega a tu primer cliente</a>
+        <a href="../Register_U.php">Agrega a tu primer cliente</a>
       </div>
     </div>
   <?php endif?>

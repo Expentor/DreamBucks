@@ -46,6 +46,8 @@ CREATE TABLE `admins` (
 INSERT INTO `admins` (`id_A`, `num-trab`, `name_A`, `password_A`, `email_A`) VALUES
 (20202003, 0, 'Matias Morquecho', 'antifurros', 'mtirado0@ucol.mx');
 
+INSERT INTO `admins` (`id_A`, `num-trab`, `name_A`, `password_A`, `email_A`) VALUES
+(20202004, 1, 'Adair Fernandez', 'furros', 'afernandez0@ucol.mx');
 -- --------------------------------------------------------
 
 --
