@@ -18,8 +18,6 @@
             <nav class="navigation">
                 <ul>
                     <li><a href="Logout.php">Cerrar Sesion</a></li>
-                </ul>
-                <ul>
                     <li><a href="user.php">Volver a mis prestamos</a></li>
                 </ul>
             </nav>
