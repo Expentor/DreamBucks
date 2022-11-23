@@ -26,7 +26,7 @@
 </html>
 
 <?php
-include("ConnectDB.php");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 // obtenemos el nombre de usuario con la variable global SESSION
 session_start();
 $user= $_SESSION["name_U"];
