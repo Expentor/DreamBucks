@@ -51,17 +51,17 @@ $clients = $connect->query("SELECT * FROM users");
         </tr>
   <?php foreach ($clients as $client) { ?>
     <tr>
-        <td><p><?= $client["id_U"] ?></p></td>
-        <td><p class="card-title text-capitalize"><?= $client["name_U"] ?></p></td>
-        <td><p class="card-title text-capitalize"><?= $client["lastname1_U"] ?></p></td>
-        <td><p class="card-title text-capitalize"><?= $client["lastname2_U"] ?></p></td>
-        <td><p><?= $client["email_U"] ?></p></td>
-        <td><p><?= $client["debited"] ?></p></td>
-        <td><p><?= $client["address_U"] ?></p></td>
-        <td><p><?= $client["phone"] ?></p></td>
-        <td><p><?= $client["balance"] ?></p></td>
-        <td><a href="editUser.php?id_U=<?= $client["id_U"] ?>" class="btn btn-secondary mb-2">Edit Contact</a></td>
-        <td><a href="deleteUser.php?id_U=<?= $client["id_U"] ?>" class="btn btn-danger mb-2">Delete Contact</a></td>
+        <td><p><?= htmlspecialchars($client["id_U"]) ?></p></td>
+        <td><p class="card-title text-capitalize"><?= htmlspecialchars($client["name_U"]) ?></p></td>
+        <td><p class="card-title text-capitalize"><?= htmlspecialchars($client["lastname1_U"]) ?></p></td>
+        <td><p class="card-title text-capitalize"><?= htmlspecialchars($client["lastname2_U"]) ?></p></td>
+        <td><p><?= htmlspecialchars($client["email_U"]) ?></p></td>
+        <td><p><?= htmlspecialchars($client["debited"]) ?></p></td>
+        <td><p><?= htmlspecialchars($client["address_U"]) ?></p></td>
+        <td><p><?= htmlspecialchars($client["phone"]) ?></p></td>
+        <td><p><?= htmlspecialchars($client["balance"]) ?></p></td>
+        <td><a href="editUser.php?id_U=<?= htmlspecialchars($client["id_U"]) ?>" class="btn btn-secondary mb-2">Edit Contact</a></td>
+        <td><a href="deleteUser.php?id_U=<?= htmlspecialchars($client["id_U"]) ?>" class="btn btn-danger mb-2">Delete Contact</a></td>
     </tr>
   <?php } ?>
   </table>
