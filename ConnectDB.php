@@ -3,7 +3,6 @@
 //$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 
 
-
 // conectare a base de datos
 $host = "localhost";
 $database = "dreambucks";
