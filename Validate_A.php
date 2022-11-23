@@ -1,5 +1,5 @@
 <?php
-include('ConnectDB.php');
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 // aqui se valida al admi que quiera hacer login
 $ID= test_input($_POST['id']);
 $PASSWORD= test_input($_POST['password']);

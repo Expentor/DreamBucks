@@ -26,15 +26,19 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `admins`
 --
+drop database if exists dreambucks;
+
+create database dreambucks;
+
+use dreambucks;
 
 CREATE TABLE `admins` (
-  `id_A` int(100) NOT NULL,
+  `id_A` int(100) NOT NULL PRIMARY KEY,
   `num-trab` int(100) NOT NULL,
   `name_A` varchar(50) NOT NULL,
   `password_A` varchar(200) NOT NULL,
   `email_A` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Volcado de datos para la tabla `admins`
 --
@@ -42,6 +46,8 @@ CREATE TABLE `admins` (
 INSERT INTO `admins` (`id_A`, `num-trab`, `name_A`, `password_A`, `email_A`) VALUES
 (20202003, 0, 'Matias Morquecho', 'antifurros', 'mtirado0@ucol.mx');
 
+INSERT INTO `admins` (`id_A`, `num-trab`, `name_A`, `password_A`, `email_A`) VALUES
+(20202004, 1, 'Adair Fernandez', 'furros', 'afernandez0@ucol.mx');
 -- --------------------------------------------------------
 
 --
@@ -111,6 +117,7 @@ CREATE TABLE `users` (
   `phone` bigint(13) NOT NULL,
   `id_A1` int(100) NOT NULL,
   `balance` int(100) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -165,6 +172,9 @@ ALTER TABLE `movements`
 ALTER TABLE `users`
   MODIFY `id_U` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
+
+ALTER TABLE `users`
+ADD FOREIGN KEY (id_A1) REFERENCES admins(id_A)
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
