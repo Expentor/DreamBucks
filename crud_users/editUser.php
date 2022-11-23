@@ -78,12 +78,12 @@
             <p class="text-danger">
               <?= $error ?>
             <?php endif ?>
-          <form method="POST" action="editUser.php?id_U=<?= $client["id_U"] ?>">
+          <form method="POST" action="editUser.php?id_U=<?= htmlspecialchars($client["id_U"] )?>">
             <div class="mb-3 row">
               <label for="name" class="col-md-4 col-form-label text-md-end">Nombre del Cliente</label>
 
               <div class="col-md-6">
-                <input value="<?= $client["name_U"]?>" id="name_U" type="text" class="form-control" name="name_U" autocomplete="name" autofocus>
+                <input value="<?= htmlspecialchars($client["name_U"])?>" id="name_U" type="text" class="form-control" name="name_U" autocomplete="name" autofocus>
               </div>
             </div>
 
@@ -91,7 +91,7 @@
               <label for="lastname1_U" class="col-md-4 col-form-label text-md-end">Apellido Paterno</label>
 
               <div class="col-md-6">
-                <input value="<?= $client["lastname1_U"]?>" id="lastname1_U" class="form-control" name="lastname1_U" autofocus>
+                <input value="<?= htmlspecialchars($client["lastname1_U"])?>" id="lastname1_U" class="form-control" name="lastname1_U" autofocus>
               </div>
             </div>
 
@@ -99,7 +99,7 @@
               <label for="lastname2_U" class="col-md-4 col-form-label text-md-end">Apellido Materno</label>
 
               <div class="col-md-6">
-                <input value="<?= $client["lastname2_U"]?>" id="lastname2_U" class="form-control" name="lastname2_U" autofocus>
+                <input value="<?= htmlspecialchars($client["lastname2_U"])?>" id="lastname2_U" class="form-control" name="lastname2_U" autofocus>
               </div>
             </div>
 
@@ -107,7 +107,7 @@
               <label for="password_U" class="col-md-4 col-form-label text-md-end">Contraseña</label>
 
               <div class="col-md-6">
-                <input value="<?= $client["password_U"]?>" id="password_U" class="form-control" name="password_U" autofocus>
+                <input value="<?= htmlspecialchars($client["password_U"])?>" id="password_U" class="form-control" name="password_U" autofocus>
               </div>
             </div>
 
@@ -115,7 +115,7 @@
               <label for="email_U" class="col-md-4 col-form-label text-md-end">Email</label>
 
               <div class="col-md-6">
-                <input value="<?= $client["email_U"]?>" id="email_U" class="form-control" name="email_U" autofocus>
+                <input value="<?= htmlspecialchars($client["email_U"])?>" id="email_U" class="form-control" name="email_U" autofocus>
               </div>
             </div>
 
@@ -123,7 +123,7 @@
               <label for="debited" class="col-md-4 col-form-label text-md-end">Debitado</label>
 
               <div class="col-md-6">
-                <input value="<?= $client["debited"]?>" id="debited" class="form-control" name="debited" autofocus>
+                <input value="<?= htmlspecialchars($client["debited"])?>" id="debited" class="form-control" name="debited" autofocus>
               </div>
             </div>
 
@@ -131,7 +131,7 @@
               <label for="address_U" class="col-md-4 col-form-label text-md-end">Direccion</label>
 
               <div class="col-md-6">
-                <input value="<?= $client["address_U"]?>" id="address_U" class="form-control" name="address_U" autofocus>
+                <input value="<?= htmlspecialchars($client["address_U"])?>" id="address_U" class="form-control" name="address_U" autofocus>
               </div>
             </div>
 
@@ -139,7 +139,7 @@
               <label for="phone" class="col-md-4 col-form-label text-md-end">Telefono</label>
 
               <div class="col-md-6">
-                <input value="<?= $client["phone"]?>" id="phone" class="form-control" name="phone" type="tel" autofocus>
+                <input value="<?= htmlspecialchars($client["phone"])?>" id="phone" class="form-control" name="phone" type="tel" autofocus>
               </div>
             </div>
 
@@ -147,7 +147,7 @@
               <label for="balance" class="col-md-4 col-form-label text-md-end">Saldo</label>
 
               <div class="col-md-6">
-                <input value="<?= $client["balance"]?>" id="balance" class="form-control" name="balance" autofocus>
+                <input value="<?= htmlspecialchars($client["balance"])?>" id="balance" class="form-control" name="balance" autofocus>
               </div>
             </div>
 

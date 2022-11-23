@@ -26,7 +26,7 @@
 </body>
 </html>
 <?php
-include("ConnectDB.php");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 $id = $_GET['id']; // el id del prestamo
 
 $consult = "SELECT * FROM loans WHERE id_L='$id'"; 

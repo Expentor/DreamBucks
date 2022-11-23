@@ -1,5 +1,5 @@
 <?php
-include("ConnectDB.php");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 
 // declarsmoa variables con los datos provenientes de login A utilizando el metodo post
 $NAME =$_POST["name"];
