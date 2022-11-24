@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_SESSION["id_A"])) {
+    header("Location: index.php");
+    return;
+  }
+
 // este es el apartado del admi y el unico acceso para agregar usuarios nuevos
 echo "hola ejecutivo que te gustarira hacer"; 
 ?>

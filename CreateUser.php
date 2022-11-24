@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_SESSION["id_A"])) {
+    header("Location: index.php");
+    return;
+  }
+
 $connect = mysqli_connect("localhost", "root", "", "dreambucks");
 session_start();
 //utilizamos la variable global SESSION para recurrir al id del admi 
