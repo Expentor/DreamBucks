@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,400&display=swap');
+
+:root{
+    --cremamenta: #F1FFFA;
+    --verdete: #CCFCCB;
+    --verdesalvia: #3C760C;
+    --negro: #090909;
+    --ocre: #64554E;
+    --verde: #0fb42b;
+    --fuente: Arial, Helvetica, sans-serif;
+    --superverde: #4bf745;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    *background-color: var(--superverde);
+    font-family: 'Lato', sans-serif;
+}
+
+html{
+    background-image: url("../DreamBucks/images/bg-forms.jpg");
+}
+
+main{
+    padding-top: 200px;
+    padding-left: 80px;
+    padding-right: 20px;
+    padding-bottom: 200px;
+}
+
+.content-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 1.2em;
+    min-width: 400px;
+    *border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+
+.content-table thead th{
+    background-color: var(--verde);
+    color: var(--negro);
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table tr,
+.content-table td{
+    padding: 12px 15px;
+    background-color: var(--cremamenta);
+    font-weight: bold;
+    color: var(--verde);
+    *border-left: 2px solid var(--verde);
+    *border-right: 2px solid var(--verde);
+}
+
+.content-table tbody tr{
+    border-bottom: 2px solid var(--verde);
+    border-left: 2px solid var(--verde);
+    border-right: 2px solid var(--verde);
+}
+
+.btn-edit{
+    color: var(--negro);
+    text-decoration: none;
+    background-color: var(--verde);
+    border-color: var(--negro);
+    border-radius: 15px;
+    padding: 5px 5px;
+    transition: all 300ms;
+}
+
+.btn-edit:hover {
+    background-color: var(--superverde);
+}
+
+.btn-delete{
+    color: var(--negro);
+    text-decoration: none;
+    background-color: red;
+    border-color: var(--negro);
+    border-radius: 15px;
+    padding: 5px 5px;
+    transition: all 300ms;
+}
+
+.btn-delete:hover{
+    background-color: var(--ocre);
+}
