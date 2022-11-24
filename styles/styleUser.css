@@ -10,12 +10,14 @@ body{
 }
 
 .container_a{
-    margin: 20px 25px 20px 125px;
-    width: 450px;
+    margin-top: 2em; 
+    margin-bottom: 1em; 
+    margin-left: 10%; 
+    width: 35%;
     border-radius: 10px;
-    border: 1px solid #3C760C;
-    background: #F1FFFA;
-    padding: 20px;
+    border: 2px solid #3C760C;
+    background: #ffffff;
+    padding: 1% 1.2% .8% 1%;
     float: left;
     flex-direction : row;
 }
@@ -32,7 +34,12 @@ body{
 }
 
 .advertisements{
-    padding: 150px 10% 20px;
+    margin-top: 10%;
+    margin-left: 10%;
+    
+    /*
+    padding: 8em 8em 1em;
+    */
 }
 
 .bad{
@@ -58,17 +65,26 @@ body{
     padding: 2rem 0;
 }
 
+.cadabra{
+    padding-top: 2em;
+    padding-bottom: -10em;
+}
+.cantidad{
+    width: 30%;
+}
+
 .pay{
-    margin-left: -.4em;
-    margin-top: .1em;
-    padding: 5px;
-    font-size: 16px;
-    background:  #F1FFFA;
-    border: 1px solid #F1FFFA;
-    color: black;
+    margin-top: 1%;
+    margin-right: -10%;
+    margin-bottom: -15%;
+    margin-left: 45%;
+    padding: 2% 5.2% 2.9% 6%;
+    font-size: 100%;
+    background:  #3C760C;
+    border: 0px solid;
+    color: white;
     text-decoration: none;
-    text-align: center;
-    border-radius: 10px;
+    border-radius: 10px 0px 6px 0px;
 }
 
 .pay:hover{
@@ -76,6 +92,7 @@ body{
     color: white;
     transition:all .5s;
 }
+
 
 
 .buttowon{
