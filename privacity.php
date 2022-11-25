@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styleHeaderUL.css">
-    <link rel="stylesheet" href="./styles/stylePrivacity.css">
+    <link rel="stylesheet" href="./styles/stylePriv.css">
     <title>Acuerdos de privacidad</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
     </header>
 
     <main>
-        <iframe src="./images/Acuerdo de privacidad Dreambucks.pdf" frameborder="0"></iframe>
+        <center><iframe src="./images/Acuerdo de privacidad Dreambucks.pdf" frameborder="0"></iframe></center>
     </main>
 
 </body>

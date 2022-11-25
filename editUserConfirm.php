@@ -13,9 +13,9 @@ $clients = $conn->query("SELECT * FROM users");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styleHeader.css">
-    <link rel="stylesheet" href="../styles/styleCrudUser.css">
-    <link rel="stylesheet" href="./styles/styleAlert.css">
+    <link rel="stylesheet" href="./styles/styleHeaderUL.css">
+    <link rel="stylesheet" href="./styles/styleCrud.css">
+    <link rel="stylesheet" href="./styles/styleConfirm.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <title>Pagina de clientes</title>

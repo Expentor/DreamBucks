@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "MS2002hector", "dreambucks5");
 // aqui validamos al usuario cliente
 $NAME= test_input($_POST['name']);
 $PASSWORD= test_input($_POST['password']);
@@ -29,6 +29,7 @@ if($rows){
         alert('Usuario o Password incorrecto');
         window.location =Fakedata.html;
     </script>";
+    header("location:fakeData.html"); 
 
 }
 

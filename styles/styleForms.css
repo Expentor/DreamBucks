@@ -30,6 +30,10 @@ main{
     padding-bottom: 100px;
 }
 
+header{
+    z-index: 2;
+}
+
 .form{
     background-color: var(--verdete);
     margin: auto;

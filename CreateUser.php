@@ -1,11 +1,5 @@
 <?php
-
-if (!isset($_SESSION["id_A"])) {
-    header("Location: index.php");
-    return;
-  }
-
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "MS2002hector", "dreambucks5");
 session_start();
 //utilizamos la variable global SESSION para recurrir al id del admi 
 $ADMIN = $_SESSION["id_A"]; 
@@ -16,8 +10,8 @@ $PASSWORD =$_POST["password"];
 $EMAIL =$_POST["email"];
 $ADDRESS =$_POST["address"];
 $PHONE =$_POST["phone"];
-$LASTNAME1 =$_POST["lastname1"];
-$LASTNAME2 =$_POST["lastname2"];
+$LASTNAME1 =$_POST["lastname1_U"];
+$LASTNAME2 =$_POST["lastname2_U"];
 $DEBITED= 0;
 $BALANCE=0;
 
@@ -41,7 +35,7 @@ if(!$consultId){
 
     // insertamos en la base de datos la informacion, los espacios en blanco son datos que aun no se tienen
     if(!$consultE){
-    $sql = "INSERT INTO users (name_U, lastname1_U, lastname2_U, password_U, email_U, debited, address_U, phone, id_A1, balance) VALUES ('$NAME', '$LASTNAME1', '$LASTNAME2', '$PASSWORD', '$EMAIL','$BALANCE', '$ADDRESS', '$PHONE','$ADMIN','$DEBITED')";    
+    $sql = "INSERT INTO users (name_U, lastname1_U, lastname2_U, password_U, email_U, debited, address_U, phone, id_A1, balance) VALUES ('$NAME', '$LASTNAME1', '$LASTNAME2', '$PASSWORD', '$EMAIL','0', '$ADDRESS', '$PHONE','$ADMIN','0')";    
     }else {
     echo "<script>
     alert('email existente');
@@ -50,7 +44,7 @@ if(!$consultId){
     }
     
     if(mysqli_query($connect,$sql)){
-        header("location: Login_U.php");
+        header("location: CreationUserConfirm.php");
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connect);
     } 

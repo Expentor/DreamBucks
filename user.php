@@ -1,35 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" c
-        rossorigin="anonymous">
-        <link rel="stylesheet" href="./styles/styleHeaderUL.css">
-        <link rel="stylesheet" href="./styles/styleUser.css">
-        <title>User</title>
-</head>
-<body>
-
-        <header class="header">
-        <div class="container-head logo-nav-container">
-            <a class="logo">DREAMBUCKS</a>
-            <div class="menu-icon">Cerrar Sesion</div>
-            <nav class="navigation">
-                <ul>
-                    <li><a href="Logout.php">Cerrar Sesion</a></li>
-                </ul>
-            </nav>
-        </div>
-        </header>
-
-</body>
-</html>
-
 <?php
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+include("ConnectDB.php");
 // obtenemos el nombre de usuario con la variable global SESSION
 session_start();
 $user= $_SESSION["name_U"];
@@ -48,26 +18,20 @@ $consult = "SELECT * FROM users WHERE name_U='$user'";
 $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
-<div class="advertisements">
-<h1>Prestamos</h1><br>
 <?php   
         $id = $row[0]; //guardamos su id en una variable
-        $balance = $row[10]; //guardamos el saldo del usuario
+        $balance = $row[8]; //guardamos el saldo del usuario
         if($balance<0){
-                echo '
-                <div class="alert"><h1>⚠️</h1></div>
-                <div class="bad">
-                <h4>Actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio.<h4>
-                <h4>Ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion
-                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: ' .'$' . abs($balance) . '<br></h4></div>';
+                echo "actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio
+                .<br> ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion <br> <br>
+                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: " .'$' . abs($balance) . '<br>';
         } else {
-                echo '<h4 class="text">Cuenta con un saldo de: $' . $row[10] . "<br></h4>"; //el saldo del cliente
+                echo 'cuentas con un saldo de: $' . $row[8] . "<br>"; //el saldo del cliente
         }
         
-        echo '<h4 class="text">Usted debe un total de: $'. $row[6] . "<br></h4>";  //lo que debe el usuario
+        echo 'usted debe un total de: $'. $row[4] . "<br>";  //lo que debe el usuario
         
-?></div>
-
+?><br><br>
 <?php
 }
 
@@ -76,27 +40,22 @@ $consult = "SELECT * FROM loans WHERE id_U1='$id'";
 $result  = mysqli_query($connect, $consult);
 while ($row2 = mysqli_fetch_row($result)){
 ?>
-
-<div class="container_a">
-   <?php   
-   echo '<p class="a">Fecha del prestamo: </p>'                 .$row2[2] .      "<br>";
-   echo '<p class="a">Cantidad prestada: </p>'                  .$row2[3] .      "<br>" ;
-   echo '<p class="a">El porcentaje de interes fue del: </p>'   .$row2[4] . '%' ."<br>";
-   echo '<p class="a">Faltante de pagar por este prestamo: </p>'.$row2[8] .      "<br>";
-   echo '<p class="a">Lapsos solicitados: </p>'                 .$row2[6] .      "<br>";
-   ?>
-
-<?php  
-
+ <?php  
+   echo 'fecha del prestamo: '                  .$row2[0] .      "<br>";
+   echo 'cantidad prestada: '                   .$row2[2] .      "<br>" ;
+   echo 'el porcentaje de interes fue del: '    .$row2[3] . '%' ."<br>";
+   echo 'faltante de pagar por este prestamo: $'.$row2[4] .      "<br>";
+   echo 'lapsos solicitados: '                  .$row2[6] .      "<br>";
+ 
  //DECLARAR variables provenientes de la tabla loans
  $lapses = $row2[6];    // guardo los lapsos en esta variable
- $dateLoan = $row2[2]; //guardamos en una variable la fecha en la que se hizo el prestamo 
+ $dateLoan = $row2[0]; //guardamos en una variable la fecha en la que se hizo el prestamo 
  $id_U = $row2[1]; //identificacion del usuario
- $idloan = $row2[0]; //identificacion del prestamo
+ $idloan = $row2[5]; //identificacion del prestamo
  $quota = $row2[7]; //la cuota que se pagara cada mes
  $due = $row2[8]; //lo que actualmente debe de este prestamo el usuario
  $iterator = $row2[9]; //el iterador que ayuda a que cada mes no se ejecute 2 veces la misma accion o peticion
- $total = $row2[5]; //el total del prestamo
+ $total = $row2[4]; //el total del prestamo
 
  $n = 0;
  $loan = date_create($dateLoan);//  creamos la fecha de la creacion del prestamo obtenida de la base de datos
@@ -158,13 +117,8 @@ $subtract_total ="UPDATE loans
         }
 
         if($due > $quota){
-                ?>
-                <div class="alert"><h1>⚠️</h1></div>
-                <div class="bad"> <?php
-                echo '<p class="a">Usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta </p><br> ';
-                ?></div><?php
-   
-   
+                echo 'usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta<br> ';
+
                 if(mysqli_query($connect,$subtract_balance)){ //ejecutamos la resta de su cuenta
                 } else {
                         echo "Error: " . $subtract_balance . "<br>" . mysqli_error($connect);
@@ -178,32 +132,14 @@ $subtract_total ="UPDATE loans
                         echo "Error: " . $subtract_total . "<br>" . mysqli_error($connect);
                         }      
         }
-
-           
-        echo '<p class="a">Ultima fecha para pagar la cuota actual: </p>' . date('Y-m-d',$dayPay) . "<br>";
-        echo '<p class="a">Este mes usted tiene que pagar esta cantidad : </p>' . $row2[8] . '<br>';
+        echo 'ultima fecha para pagar la cuota actual: ' . date('Y-m-d',$dayPay) . "<br>";
+        echo 'este mes usted tiene que pagar esta cantidad : ' . $row2[8] . '<br>';
         echo  $interval->format('%m') . '/////' . $iterator;
-        
-        ?>
-
-        
+ ?>
 <br>
-<!--
-<button class="pay">Prueba</button><br> 
-<button class="pay" onclick="location.href='Pay.php?id=<?php echo $row2[0]?>'">Pagar</button><br> 
--->
-<div class="cadabra"">
-        <form method="post" action="Process_Pay.php?id=<?php echo  $row2[0]?>">
-                <label for="pay">Ingresa cantidad:</label>
-                <input class="cantidad" type="text" name="pay" placeholder="dinero" id="pay" required>  
-                <input class="buttons" type="submit" name="" value="Ingresar">
-        </form>
-</div>
+ <a href="Pay.php?id=<?php echo $row2[5]?>">pagar</a><br> 
 
-<button class="pay" onclick="location.href='tabla.php?id=<?php echo $row2[0]?>'">Mostrar tabla de amortizacion</a><br> 
-</div>
-
-
+ <br><br><br>
 <?php
 
 }

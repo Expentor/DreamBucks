@@ -18,6 +18,10 @@
     font-family: 'Lato', sans-serif;
 }
 
+header{
+    z-index: 2;
+}
+
 .confirmation{
     background: var(--verde);
     padding: 20px 40px;

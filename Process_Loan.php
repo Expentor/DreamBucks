@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 <?php
-$connect = mysqli_connect("localhost", "root", "", "dreambucks5");
+$connect = mysqli_connect("localhost", "root", "MS2002hector", "dreambucks5");
 
 // declarsmoa variables con los datos provenientes de login A utilizando el metodo post
 $NAME =$_POST["name"];
@@ -43,7 +43,7 @@ $consult_U = mysqli_fetch_array($consult_U);
 
 if($totalDebt>=100000 or $balance<0){
     echo "<script>
-    alert('este usuario cuenta con saldo negativo o exedio el limite de prestamos');
+    alert('este usuario cuenta con saldo negativo o excedio el limite de prestamos');
     window.location = 'admin.php';
     </script>";
 }else{
@@ -57,7 +57,7 @@ if($totalDebt>=100000 or $balance<0){
             </script>";
         }
         if(mysqli_query($connect,$sql)){
-            //header("location: CreateLoan.php");
+            header("location: creationLoanConfirm.php");
             //"";
         }else {
             echo "Error: " . $sql . "<br>" . mysqli_error($connect);

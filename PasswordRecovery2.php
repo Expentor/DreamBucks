@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "MS2002hector", "dreambucks5");
 // codigo para enviar al correo del usuario su password, ojo no la puede cambiar solo recordarla(funciona solo en hosting)
 $EMAIL= $_POST['txtcorreo'];
 
@@ -23,9 +23,9 @@ $header = "X-Mailer: PHP/" . phpversion();
 $mail = @mail($correo,$asunto,$msg,$header);
 
 if($mail){
-    echo"<h4>Mail enviado exitosamente<h4>";
+    echo"<h4>Correo enviado exitosamente<h4>";
     }else{
-        echo "lo siento bro algo hiciste mal";
+        echo "No se ha podido enviar el correo";
 }
 
 ?>
