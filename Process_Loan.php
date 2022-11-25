@@ -1,5 +1,7 @@
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
 <?php
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks5");
 
 // declarsmoa variables con los datos provenientes de login A utilizando el metodo post
 $NAME =$_POST["name"];
@@ -55,7 +57,8 @@ if($totalDebt>=100000 or $balance<0){
             </script>";
         }
         if(mysqli_query($connect,$sql)){
-            header("location: admin.php");
+            //header("location: CreateLoan.php");
+            //"";
         }else {
             echo "Error: " . $sql . "<br>" . mysqli_error($connect);
         }

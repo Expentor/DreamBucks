@@ -224,3 +224,10 @@ echo "Error: " . $update_debited . "<br>" . mysqli_error($connect);
 }    
 
 ?>
+
+
+<br>
+<a href="Logout.php" class="">Cerrar Sesion</a>
+
+
+

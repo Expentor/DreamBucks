@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dreambucks</title>
-    <link rel="stylesheet" href="./styles/styleMainPages.css">
+    <link rel="stylesheet" href="./styles/styleMainPage.css">
 
 </head>
 <body>
@@ -19,10 +19,9 @@
             <div class="menu">
                 <nav>
                     <ul>
-                        <li><a href="#">Acerca de</a></li>
-                        <li><a href="#">Contactos</a></li>
+                        <li><a href="contacts.php">Contactos</a></li>
                         <li><a href="Login_U.php">Usuario</a></li>
-                        <li><a href="Login_A.php">Administrador</a></li>
+                        <li><a href="Login_A.php">Ejecutivo</a></li>
                     </ul>
                 </nav>
             </div>
@@ -38,7 +37,8 @@
                     <p>Vive la experiencia de la mejor aplicación para mantener controlados tus movimientos y conoce 
                         a los ejecutivos los cuales te ayudaran en todos tus procesos</p> 
      
-                     <input type="button" value="Leer más">
+                     <a href="privacity.php">Acuerdos de privacidad</a>
+
                 </div>
 
                 <div class="svg">

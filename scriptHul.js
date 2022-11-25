@@ -12,3 +12,8 @@ jQuery('document').ready(function($){
 
     });
 });
+
+$('.form-submit').click(function(){
+    $('.confirmation').removeClass("hide");
+    $('.confirmation').addClass("show");
+});  
