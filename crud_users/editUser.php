@@ -29,7 +29,6 @@ if (!isset($_SESSION["id_A"])) {
       $name_U = $_POST["name_U"];
       $lastname1_U = $_POST["lastname1_U"];
       $lastname2_U = $_POST["lastname2_U"];
-      $password_U = $_POST["password_U"];
       $email_U = $_POST["email_U"];
       $debited = $_POST["debited"];
       $address_U = $_POST["address_U"];
@@ -37,14 +36,13 @@ if (!isset($_SESSION["id_A"])) {
       $balance = $_POST["balance"];
 
       $statement = $conn->prepare("UPDATE users SET name_U = :name_U, lastname1_U = :lastname1_U,
-       lastname2_U = :lastname2_U, password_U = :password_U, email_U = :email_U, debited = :debited, 
+       lastname2_U = :lastname2_U, email_U = :email_U, debited = :debited, 
        address_U = :address_U, phone = :phone, balance = :balance WHERE id_U = :id_U");
       $statement->execute([
         ":id_U" => $id,
         ":name_U" => $_POST["name_U"],
         ":lastname1_U" => $_POST["lastname1_U"],
         ":lastname2_U" => $_POST["lastname2_U"],
-        ":password_U" => $_POST["password_U"],
         ":email_U" => $_POST["email_U"],
         ":debited" => $_POST["debited"],
         ":address_U" => $_POST["address_U"],

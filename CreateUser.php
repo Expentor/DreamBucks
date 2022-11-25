@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "MS2002hector", "dreambucks5");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 session_start();
 //utilizamos la variable global SESSION para recurrir al id del admi 
 $ADMIN = $_SESSION["id_A"]; 
@@ -44,7 +44,7 @@ if(!$consultId){
     }
     
     if(mysqli_query($connect,$sql)){
-        header("location: CreationUserConfirm.php");
+        header("location: creationUserConfirm.php");
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connect);
     } 

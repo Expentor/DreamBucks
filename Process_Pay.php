@@ -4,7 +4,7 @@ session_start();
 $user= $_SESSION["name_U"]; // nombre del usuario
 $id = $_GET['id']; // el id del prestamo
 
-include("ConnectDB.php");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 
 // el dinero que el usuario utiliza para pagar se guarda en esta variable
 $deposit =$_POST["pay"];
@@ -13,12 +13,15 @@ $deposit =$_POST["pay"];
 mysqli_set_charset($connect, "utf8");            
 
 // consulta para encontrar el prestamo que se pagara
-$consult = "SELECT * FROM loans WHERE id_L='$id'"; 
+$consult = "SELECT * FROM loans WHERE id_L='$id'"; if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+    return;
+  } 
 $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
 <?php 
-    $total= $row[4];// guardamos en una variable lo que le falta por pagar al usuario 
+    $total= $row[5];// guardamos en una variable lo que le falta por pagar al usuario 
     $id_U1 = $row[1]; //guardamos el id del usuario
     $due = $row[8]; //lo que el usuario debe pagar este mes
 ?>
@@ -31,7 +34,7 @@ $result  = mysqli_query($connect, $consult);
 while ($row2 = mysqli_fetch_row($result)){
 ?>
 <?php 
-    $balance = $row2[8]; 
+    $balance = $row2[10]; 
 ?>
 <?php
 }
@@ -95,18 +98,15 @@ if($deposit < $total && $deposit <= $due){
         }                 
     }else{
         echo "<script>
-        alert('ingresaste un cantidad de dinero que no tienes, por favor vuelve a intentarlo');
+        alert('Ingresaste un cantidad de dinero que no tienes, por favor vuelve a intentarlo');
         window.location =Pay.php;
         </script>";
     }
 }else{
     echo "<script>
-    alert('ingresaste un cantidad mayor a la cuota que debes este mes, verifica  y vuelve a intentarlo');
+    alert('Ingresaste un cantidad mayor a la cuota que debes este mes, verifica  y vuelve a intentarlo');
     window.location =Pay.php;
     </script>";
 }    
 
 ?>
-
-
-

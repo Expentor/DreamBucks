@@ -34,7 +34,7 @@
                         <div class="form-container">
 
                                 <div class="group">
-                                        <input class="form-input" type="text" name="name" pattern="[a-zA-Z0-9]+" maxlength="15" id="name" placeholder=" " required>
+                                        <input class="form-input" type="text" name="name" maxlength="60" id="name" placeholder=" " required>
                                         <label for="name" class="label">Nombre</label>
                                         <span class="form-line"></span>
                                 </div>
@@ -52,19 +52,19 @@
                                 </div>
 
                                 <div class="group">
-                                        <input class="form-input" type="password" name="password" maxlength="20" id="password"  placeholder=" " required>
+                                        <input class="form-input" type="password" name="password" maxlength="30" id="password"  placeholder=" " required>
                                         <label for="password" class="label">Contraseña</label>
                                         <span class="form-line"></span>
                                 </div>
 
                                 <div class="group">
-                                        <input class="form-input" type="email" name="email" placeholder=" " id="email" maxlength="20" required>
+                                        <input class="form-input" type="email" name="email" placeholder=" " id="email" maxlength="50" required>
                                         <label class="label" for="email">Correo electrónico</label>
                                         <span class="form-line"></span>
                                 </div>
 
                                 <div class="group">
-                                        <input class="form-input" type="text" name="address" maxlength="20" placeholder=" " id="address" required>
+                                        <input class="form-input" type="text" name="address" maxlength="100" placeholder=" " id="address" required>
                                         <label for="address" class="label">Dirección</label>
                                         <span class="form-line"></span>
                                 </div>

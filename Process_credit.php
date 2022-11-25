@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "MS2002hector", "dreambucks5");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 
 // declarsmoa variables con los datos provenientes de login A utilizando el metodo post
 $NAME =$_POST["name"];
@@ -47,12 +47,12 @@ $consult_U = mysqli_fetch_array($consult_U);
             </script>";
             }            
                 if(mysqli_query($connect,$sql)){
-                    header("location: creationRechargeConfirm.php");
+                    header("location: CreationRechargeConfirm.php");
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($connect);
                 } 
                 if(mysqli_query($connect,$sql2)){
-                    header("location: creationRechargeConfirm.php");
+                    header("location: CreationRechargeConfirm.php");
                 } else {
                     echo "Error: " . $sql2 . "<br>" . mysqli_error($connect);
                 }  {

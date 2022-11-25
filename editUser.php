@@ -26,20 +26,18 @@
       $name_U = $_POST["name_U"];
       $lastname1_U = $_POST["lastname1_U"];
       $lastname2_U = $_POST["lastname2_U"];
-      $password_U = $_POST["password_U"];
       $email_U = $_POST["email_U"];
       $address_U = $_POST["address_U"];
       $phone = $_POST["phone"];
 
       $statement = $conn->prepare("UPDATE users SET name_U = :name_U, lastname1_U = :lastname1_U,
-       lastname2_U = :lastname2_U, password_U = :password_U, email_U = :email_U, 
+       lastname2_U = :lastname2_U, email_U = :email_U, 
        address_U = :address_U, phone = :phone WHERE id_U = :id_U");
       $statement->execute([
         ":id_U" => $id,
         ":name_U" => $_POST["name_U"],
         ":lastname1_U" => $_POST["lastname1_U"],
         ":lastname2_U" => $_POST["lastname2_U"],
-        ":password_U" => $_POST["password_U"],
         ":email_U" => $_POST["email_U"],
         ":address_U" => $_POST["address_U"],
         ":phone" => $_POST["phone"],
@@ -106,12 +104,6 @@
                   <div class="group">
                     <input value="<?= $client["lastname2_U"]?>" id="lastname2_U" class="form-input" name="lastname2_U" placeholder=" " autofocus>
                     <label for="lastname2_U" class="label">Apellido Materno</label>
-                    <span class="form-line"></span>
-                  </div>
-                          
-                  <div class="group">
-                    <input value="<?= $client["password_U"]?>" id="password_U" class="form-input" name="password_U" placeholder=" " autofocus>
-                    <label for="password_U" class="label">Contraseña</label>
                     <span class="form-line"></span>
                   </div>
 

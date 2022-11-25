@@ -1,12 +1,12 @@
 <?php
 
 // conectare a base de datos
-//$connect = mysqli_connect("localhost", "root", "MS2002hector", "dreambucks5");
+//$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 
 $host = "localhost";
-$database = "dreambucks5";
+$database = "dreambucks";
 $user = "root";
-$password = "MS2002hector";
+$password = "";
 
 try {
   $conn = new PDO("mysql:host=$host;dbname=$database", $user, $password);

@@ -67,14 +67,6 @@
                                 </div>
 
                                 <input class="form-submit" type="submit" value="Ingresar">
-                                
-                                <div class="confirmation hide">
-                                        <span class="fas fa-exclamation-circle"></span>
-                                        <span class="msg">Prestamo creado correctamente</span>
-                                        <span class="close-btn">
-                                                <span class="fas fa-times"></span>
-                                        </span>
-                                </div>
 
                                 <script>
                                               
