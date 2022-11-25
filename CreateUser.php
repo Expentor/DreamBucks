@@ -5,7 +5,7 @@ if (!isset($_SESSION["id_A"])) {
     return;
   }
 
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
 session_start();
 //utilizamos la variable global SESSION para recurrir al id del admi 
 $ADMIN = $_SESSION["id_A"]; 

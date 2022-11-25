@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
 // aqui validamos al usuario cliente
 $NAME= test_input($_POST['name']);
 $PASSWORD= test_input($_POST['password']);

@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,400&display=swap');
+
+:root{
+    --cremamenta: #F1FFFA;
+    --verdete: #CCFCCB;
+    --verdesalvia: #3C760C;
+    --negro: #090909;
+    --ocre: #64554E;
+    --verde: #0fb42b;
+    --fuente: Arial, Helvetica, sans-serif;
+    --superverde: #4bf745;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+header{
+    z-index: 2;
+}
+
+.confirmation{
+    background: var(--verde);
+    padding: 20px 40px;
+    margin-top: 120px;
+    min-width: 420px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    border-radius: 4px;
+    border-left: 4px solid var(--superverde);
+    z-index: 0;
+}
+
+.confirmation.show{
+    animation: show_slide 1s ease forwards;
+}
+
+@keyframes show_slide {
+    0%{
+        transform: translateX(100%)
+
+    }
+    40%{
+        transform: translateX(-10%)
+        
+    }
+    80%{
+        transform: translateX(0%)
+        
+    }
+    100%{
+        transform: translateX(-10px)
+        
+    }
+}
+
+.confirmation.hide{
+    display: none;
+}
+
+.confirmation .fa-exclamation-circle{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--negro);
+    font-size: 30px;
+}
+
+.confirmation .msg{
+    padding: 0 20px;
+    font-size: 18px;
+    color: var(--negro);
+}
+
+.confirmation .close-btn{
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--superverde);
+    padding: 20px 18px;
+}
+
+.close-btn:hover{
+    background: var(--negro);
+}
+.close-btn .fa-times{
+    color: var(--ocre);
+}

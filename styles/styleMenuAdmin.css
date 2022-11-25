@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,400&display=swap');
+
+:root{
+    --cremamenta: #F1FFFA;
+    --verdete: #CCFCCB;
+    --verdesalvia: #3C760C;
+    --negro: #090909;
+    --ocre: #64554E;
+    --verde: #0fb42b;
+    --fuente: Arial, Helvetica, sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+body{
+    *background: var(--verdete);
+    background: url('../images/bg-admin-menu.jpg')
+}
+
+.container_cards{
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 120px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    width: 300px;
+    *background: var(--cremamenta);
+    margin: 10px;
+    transition: all 300ms;
+}
+
+.card:hover{
+    width: 350px;
+}
+
+.card .cover{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card .cover img{
+    width: 250px;
+    display: block;
+    margin: auto;
+    top: 40px;
+    position: relative;
+    z-index: -1;
+    filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.5));
+    transition: all 400ms;
+}
+
+.card:hover .cover img{
+    top: 0px;
+    *filter: none;
+}
+
+.card .img_back{
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    background-size: cover;
+    border-radius: 20px;
+    transition: all 300ms;
+    z-index: -2;
+}
+
+.card:hover .img_back{
+    bottom: -40px;
+}
+
+.card:nth-of-type(1) .img_back{
+    background-image: url(../images/bg-option.jpg);
+}
+
+.card:nth-of-type(2) .img_back{
+    background-image: url(../images/bg-option.jpg);
+}
+
+.card:nth-of-type(3) .img_back{
+    background-image: url(../images/bg-option.jpg);
+}
+
+.card:nth-of-type(4) .img_back{
+    background-image: url(../images/bg-option.jpg);
+}
+
+.card .description{
+    background: var(--verde);
+    margin-top: -10px;
+    padding: 20px;
+    border-radius: 0px 0px 20px 20px;
+    transition: all 300ms;
+}
+
+.card:hover .description{
+    padding: 40px;
+}
+
+.card .description h2{
+    margin-top: 10px;
+}
+
+.card .description p{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.card .description a{
+    text-decoration: none;
+    padding: 10px 40px;
+    *margin-top: 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    color: var(--cremamenta);
+    background: var(--negro);
+    transition: all 300ms;
+}
+
+.card .description a:hover{
+    background: var(--verdesalvia);
+}

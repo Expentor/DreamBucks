@@ -4,7 +4,7 @@ session_start();
 $user= $_SESSION["name_U"]; // nombre del usuario
 $id = $_GET['id']; // el id del prestamo
 
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
 
 // el dinero que el usuario utiliza para pagar se guarda en esta variable
 $deposit =$_POST["pay"];

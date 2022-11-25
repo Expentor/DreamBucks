@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,400&display=swap');
+
+:root{
+    --cremamenta: #F1FFFA;
+    --verdete: #CCFCCB;
+    --verdesalvia: #3C760C;
+    --negro: #090909;
+    --ocre: #64554E;
+    --verde: #0fb42b;
+    --fuente: Arial, Helvetica, sans-serif;
+    --superverde: #4bf745;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+html{
+    background-color: var(--cremamenta);
+}
+
+main{
+    margin-top: 200px;
+}
+
+iframe{
+    width: 80%;
+    height: 150vh;
+}
