@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "MS2002hector", "dreambucks5");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 
 // declarsmoa variables con los datos provenientes de login A utilizando el metodo post
 $NAME =$_POST["name"];

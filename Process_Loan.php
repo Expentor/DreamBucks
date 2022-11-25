@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 <?php
-$connect = mysqli_connect("localhost", "root", "MS2002hector", "dreambucks5");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks5");
 
 // declarsmoa variables con los datos provenientes de login A utilizando el metodo post
 $NAME =$_POST["name"];

@@ -5,7 +5,3 @@
 
 <input class="buttons" type="submit" name="" value="Ingresar">
 </form>
-
-
-
-
