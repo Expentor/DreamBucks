@@ -1,5 +1,10 @@
 <!-- formulario para crear el prestamo del usuario -->
-
+<?php
+if (!isset($_SESSION["id_A"])) {
+        header("Location: index.php");
+        return;
+      }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
