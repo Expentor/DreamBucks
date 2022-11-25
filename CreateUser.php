@@ -44,7 +44,7 @@ if(!$consultId){
     }
     
     if(mysqli_query($connect,$sql)){
-        header("location: Login_U.php");
+        header("location: CreationUserConfirm.php");
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connect);
     } 

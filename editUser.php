@@ -18,9 +18,9 @@
   $error = null;
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["name_U"]) || empty($_POST["balance"]) 
-    || empty($_POST["phone"]) 
-    || empty($_POST["debited"])) {
+    if (empty($_POST["name_U"])
+    || empty($_POST["phone"]) ) {
+
       $error = "Porfavor rellene todos los campos.";
     } else {
       $name_U = $_POST["name_U"];
@@ -28,14 +28,12 @@
       $lastname2_U = $_POST["lastname2_U"];
       $password_U = $_POST["password_U"];
       $email_U = $_POST["email_U"];
-      $debited = $_POST["debited"];
       $address_U = $_POST["address_U"];
       $phone = $_POST["phone"];
-      $balance = $_POST["balance"];
 
       $statement = $conn->prepare("UPDATE users SET name_U = :name_U, lastname1_U = :lastname1_U,
-       lastname2_U = :lastname2_U, password_U = :password_U, email_U = :email_U, debited = :debited, 
-       address_U = :address_U, phone = :phone, balance = :balance WHERE id_U = :id_U");
+       lastname2_U = :lastname2_U, password_U = :password_U, email_U = :email_U, 
+       address_U = :address_U, phone = :phone WHERE id_U = :id_U");
       $statement->execute([
         ":id_U" => $id,
         ":name_U" => $_POST["name_U"],
@@ -43,13 +41,11 @@
         ":lastname2_U" => $_POST["lastname2_U"],
         ":password_U" => $_POST["password_U"],
         ":email_U" => $_POST["email_U"],
-        ":debited" => $_POST["debited"],
         ":address_U" => $_POST["address_U"],
         ":phone" => $_POST["phone"],
-        ":balance" => $_POST["balance"],
       ]);
 
-      header("Location: users_table.php");
+      header("Location: editUserConfirm.php");
     }
   }
 ?>
@@ -60,7 +56,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styleHeader.css">
+    <link rel="stylesheet" href="./styles/styleHeaderUL.css">
     <link rel="stylesheet" href="./styles/styleForms.css">
     <title>Editar Usuario</title>
 </head>
@@ -124,12 +120,6 @@
                     <label for="email_U" class="label">Correo Electrónico</label>
                     <span class="form-line"></span>
                   </div>
-
-                  <div class="group">
-                    <input value="<?= $client["debited"]?>" id="debited" class="form-input" name="debited" placeholder=" " autofocus>
-                    <label for="debited" class="label">Debitado</label>
-                    <span class="form-line"></span>
-                  </div>
                   
                   <div class="group">
                     <input value="<?= $client["address_U"]?>" id="address_U" class="form-input" name="address_U" placeholder=" " autofocus>
@@ -140,12 +130,6 @@
                   <div class="group">
                     <input value="<?= $client["phone"]?>" id="phone" class="form-input" name="phone" type="tel" placeholder=" " autofocus>
                     <label for="phone" class="label">Telefono</label>
-                    <span class="form-line"></span>
-                  </div>
-              
-                  <div class="group">
-                    <input value="<?= $client["balance"]?>" id="balance" class="form-input" name="balance" placeholder=" " autofocus>
-                    <label for="balance" class="label">Saldo</label>
                     <span class="form-line"></span>
                   </div>
             

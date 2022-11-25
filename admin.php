@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styleAdministrator.css">
-    <link rel="stylesheet" href="./styles/styleHeader.css">
+    <link rel="stylesheet" href="./styles/styleMenuAdmin.css">
+    <link rel="stylesheet" href="./styles/styleHeaderUL.css">
     <title>Ejecutivo</title>
 </head>
 <body>
@@ -28,7 +28,7 @@
 
             <div class="card">
                 <div class="cover">
-                    <img src="./images/crear_prestamo.jpg" alt="">
+                    <img src="./images/op-loan.jpg" alt="">
                     <div class="img_back"></div>
                 </div>
                 <div class="description">
@@ -40,7 +40,7 @@
 
             <div class="card">
                 <div class="cover">
-                    <img src="./images/crear_user.jpg" alt="">
+                    <img src="./images/op-account.jpg" alt="">
                     <div class="img_back"></div>
                 </div>
                 <div class="description">
@@ -52,7 +52,7 @@
 
             <div class="card">
                 <div class="cover">
-                    <img src="./images/abonar_saldo.jpg" alt="">
+                    <img src="./images/op-deposit.jpg" alt="">
                     <div class="img_back"></div>
                 </div>
                 <div class="description">
@@ -64,7 +64,7 @@
 
             <div class="card">
                 <div class="cover">
-                    <img src="./images/admin.jpg" alt="">
+                    <img src="./images/op-crud.jpg" alt="">
                     <div class="img_back"></div>
                 </div>
                 <div class="description">

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styleContacts.css">
-    <link rel="stylesheet" href="./styles/styleHeader.css">
+    <link rel="stylesheet" href="./styles/styleHeaderUL.css">
     <title>Contactos</title>
 </head>
 <body>

@@ -43,16 +43,16 @@ $consult_U = mysqli_fetch_array($consult_U);
             }else {
             echo "<script>
             alert('error');
-            window.location = 'Credit_Rechargue.php';
+            window.location = 'Credit_Recharge.php';
             </script>";
             }            
                 if(mysqli_query($connect,$sql)){
-                    header("location: admin.php");
+                    header("location: creationRechargeConfirm.php");
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($connect);
                 } 
                 if(mysqli_query($connect,$sql2)){
-                    header("location: admin.php");
+                    header("location: creationRechargeConfirm.php");
                 } else {
                     echo "Error: " . $sql2 . "<br>" . mysqli_error($connect);
                 }  {
