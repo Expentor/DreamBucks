@@ -205,9 +205,13 @@ $subtract_total ="UPDATE loans
         </div></li></ul></li></ul>
 </div>
 
+
 <div class="cadabra_2">
         <button class="pay" onclick="location.href='tabla.php?id=<?php echo $row2[0]?>'">Tabla de Mortizacion</a><br> 
 </div>
+
+<button class="pay" onclick="location.href='/app/prueba.php?id=<?php echo $row2[0]?>'">Mostrar pdf</a><br> 
+
 
 
 </div>

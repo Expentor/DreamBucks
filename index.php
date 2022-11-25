@@ -21,8 +21,8 @@
                     <ul>
                         <li><a href="#">Acerca de</a></li>
                         <li><a href="#">Contactos</a></li>
-                        <li><a href="Login_U.php">Usuario</a></li>
                         <li><a href="Login_A.php">Administrador</a></li>
+                        <li><a href="Login.php">Usuario</a></li>
                     </ul>
                 </nav>
             </div>

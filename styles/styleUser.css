@@ -15,8 +15,8 @@ html{
 
 body {
     font-family: 'Open Sans', sans-serif;
-    *background-color: var(--negro);
-    background-image: url('../images/');
+    background: #CCFCCB;
+
 
 }
 
