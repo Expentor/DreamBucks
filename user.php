@@ -4,9 +4,13 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" c
-        rossorigin="anonymous">
+        <!--
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+                rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
+                crossorigin="anonymous">
+        -->
+        
+        
         <link rel="stylesheet" href="./styles/styleHeaderUL.css">
         <link rel="stylesheet" href="./styles/styleUser.css">
         <title>User</title>
@@ -48,7 +52,7 @@ $consult = "SELECT * FROM users WHERE name_U='$user'";
 $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
-<div class="advertisements">
+<div class="advertisements ">
 <h1>Prestamos</h1><br>
 <?php   
         $id = $row[0]; //guardamos su id en una variable
@@ -77,7 +81,7 @@ $result  = mysqli_query($connect, $consult);
 while ($row2 = mysqli_fetch_row($result)){
 ?>
 
-<div class="container_a">
+<div class="container_a text-wrap">
    <?php   
    echo '<p class="a">Fecha del prestamo: </p>'                 .$row2[2] .      "<br>";
    echo '<p class="a">Cantidad prestada: </p>'                  .$row2[3] .      "<br>" ;
@@ -188,21 +192,25 @@ $subtract_total ="UPDATE loans
 
         
 <br>
-<!--
-<button class="pay">Prueba</button><br> 
-<button class="pay" onclick="location.href='Pay.php?id=<?php echo $row2[0]?>'">Pagar</button><br> 
--->
-<div class="cadabra"">
-        <form method="post" action="Process_Pay.php?id=<?php echo  $row2[0]?>">
-                <label for="pay">Ingresa cantidad:</label>
-                <input class="cantidad" type="text" name="pay" placeholder="dinero" id="pay" required>  
-                <input class="buttons" type="submit" name="" value="Ingresar">
-        </form>
+
+<div class="cadabra ">
+        <ul class="boton">
+        <li><a>Pagar</a>
+        <ul><li><div class="pr">
+                <form method="post" action="Process_Pay.php?id=<?php echo  $row2[0]?>">
+                        <label for="pay">Ingresa cantidad:</label>
+                        <input class="cantidad" type="text" name="pay" placeholder="dinero" id="pay" required>  
+                        <input class="buttowon" type="submit" name="" value="Ingresar">
+                </form>
+        </div></li></ul></li></ul>
 </div>
 
-<button class="pay" onclick="location.href='tabla.php?id=<?php echo $row2[0]?>'">Mostrar tabla de amortizacion</a><br> 
+<div class="cadabra_2">
+        <button class="pay" onclick="location.href='tabla.php?id=<?php echo $row2[0]?>'">Tabla de Mortizacion</a><br> 
 </div>
 
+
+</div>
 
 <?php
 

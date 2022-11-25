@@ -1,8 +1,7 @@
 .container-head{
     width: 85%;
-    max-width: 850;
     margin: 0 auto;
-    max-height: 300;
+    max-height: 5rem;
 }
 
 header{
@@ -22,6 +21,7 @@ header a{
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 
 .logo-nav-container{
     display: flex;
