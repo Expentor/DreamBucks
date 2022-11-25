@@ -1,9 +1,6 @@
 <!-- formulario para recargar saldo/dinero -->
 <?php
-if (!isset($_SESSION["id_A"])) {
-        header("Location: index.php");
-        return;
-      } 
+
 ?>
 <section>
         <form method="post" action="Process_credit.php">

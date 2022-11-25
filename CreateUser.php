@@ -1,9 +1,6 @@
 <?php
 
-if (!isset($_SESSION["id_A"])) {
-    header("Location: index.php");
-    return;
-  }
+
 
 $connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
 session_start();
