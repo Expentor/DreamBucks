@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" c
+        rossorigin="anonymous">
         <link rel="stylesheet" href="./styles/styleHeaderUL.css">
         <link rel="stylesheet" href="./styles/styleUser.css">
         <title>User</title>
@@ -189,12 +192,14 @@ $subtract_total ="UPDATE loans
 <button class="pay">Prueba</button><br> 
 <button class="pay" onclick="location.href='Pay.php?id=<?php echo $row2[0]?>'">Pagar</button><br> 
 -->
-<form method="post" action="Process_Pay.php?id=<?php echo  $row2[0]?>">
-        <label for="pay">Ingresa cantidad:</label>
-        <input class="" type="text" name="pay" placeholder="dinero" id="pay" required>
-        
-        <input class="buttons" type="submit" name="" value="Ingresar">
-</form>
+<div class="cadabra"">
+        <form method="post" action="Process_Pay.php?id=<?php echo  $row2[0]?>">
+                <label for="pay">Ingresa cantidad:</label>
+                <input class="cantidad" type="text" name="pay" placeholder="dinero" id="pay" required>  
+                <input class="buttons" type="submit" name="" value="Ingresar">
+        </form>
+</div>
+
 <button class="pay" onclick="location.href='tabla.php?id=<?php echo $row2[0]?>'">Mostrar tabla de amortizacion</a><br> 
 </div>
 
