@@ -1,8 +1,5 @@
 <?php
-if (!isset($_SESSION["id_A"])) {
-  header("Location: index.php");
-  return;
-}
+
   require "../ConnectDB.php";
 
   $id = $_GET["id_U"];
