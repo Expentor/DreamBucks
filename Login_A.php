@@ -20,9 +20,8 @@
             <nav class="navigation">
                 <ul>
                     <li><a href="index.php">Inicio</a></li>
-                    <li><a href="#">Acerca de</a></li>
-                    <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="Login_U.php">Usuario</a></li>
+                    <li><a href="contacts.php">Contactos</a></li>
                 </ul>
             </nav>
         </div>
@@ -40,12 +39,14 @@
             <form class="form" action="./Validate_A.php" method="POST">
                     
                 <div class="form-text">
-                    <h2>Bienvenido de nuevo administrador</h2>
+                    <h2>Bienvenido de nuevo ejecutivo</h2>
+                    <br>
                     <p>Inicie sesión con su cuenta</p>
+                    <br>
                 </div>
 
                 <div class="input">
-                    <label for="user">Usuario</label>
+                    <label for="user">Número de cuenta</label>
                     <input placeholder="Ingrese su usuario" type="text" id="id" name="id" pattern="[a-zA-Z0-9]+" required>
                 </div>
                 <div class="input">

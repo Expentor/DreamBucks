@@ -7,8 +7,8 @@
 header{
     background: #0fb42b;
     color: #F1FFFA;
-    padding: 2.2% 0;
-    
+    padding: 2rem 0;
+    max-height: 300;
 
     position: fixed;
     left: 0;

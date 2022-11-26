@@ -4,7 +4,7 @@ session_start();
 $user= $_SESSION["name_U"]; // nombre del usuario
 $id = $_GET['id']; // el id del prestamo
 
-$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 
 // el dinero que el usuario utiliza para pagar se guarda en esta variable
 $deposit =$_POST["pay"];
@@ -13,7 +13,10 @@ $deposit =$_POST["pay"];
 mysqli_set_charset($connect, "utf8");            
 
 // consulta para encontrar el prestamo que se pagara
-$consult = "SELECT * FROM loans WHERE id_L='$id'"; 
+$consult = "SELECT * FROM loans WHERE id_L='$id'"; if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+    return;
+  } 
 $result  = mysqli_query($connect, $consult);
 while ($row = mysqli_fetch_row($result)){
 ?>
@@ -107,6 +110,3 @@ if($deposit < $total && $deposit <= $due){
 }    
 
 ?>
-
-
-

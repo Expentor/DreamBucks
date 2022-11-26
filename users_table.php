@@ -55,7 +55,7 @@ $clients = $conn->query("SELECT * FROM users");
                             <th>Nombre</th>
                             <th>Apellido Paterno</th>
                             <th>Apellido Materno</th>
-                            <th>Email</th>
+                            <th>Email</t                header("location:trueDataA.html"); h>
                             <th>Debitado</th>
                             <th>Direccion</th>
                             <th>Telefono</th>

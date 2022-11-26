@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 // aqui se valida al admi que quiera hacer login
 $ID= test_input($_POST['id']);
 $PASSWORD= test_input($_POST['password']);
@@ -30,6 +30,8 @@ if($rows){
         alert('Usuario o Password incorrecto');
         window.location =Login_A.php;
     </script>";
+
+    header("location:fakeDataA.html"); 
 
 }
 
