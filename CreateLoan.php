@@ -31,6 +31,13 @@
         </header>
 
         <main>
+                <?php 
+                session_start();
+                if(!isset($_SESSION["id_A"])){
+                    header("location:index.php");
+                }
+                ?>
+                
                 <form method="post" action="Process_Loan.php" class="form">
                         <h2 class="form-title">Ingrese datos del prestamo</h2>
 
