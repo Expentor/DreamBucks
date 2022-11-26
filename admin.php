@@ -1,10 +1,3 @@
-<?php
- if (!isset($_SESSION["id_A"])) {
-    header("Location: index.php");
-    return;
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,7 +70,7 @@
                 <div class="description">
                     <h2>Administrar clientes</h2>
                     <p>Administre sus clientes para tener al alcance información o modificable o eliminación de cuentas.</p>
-                    <a href="users_table.php" class=>Administrar</a>
+                    <a href="./users_table.php" class=>Administrar</a>
                 </div>
             </div>
 
