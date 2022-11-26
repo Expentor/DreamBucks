@@ -17,22 +17,39 @@ $intereses = 0;
 $abono = 0;
 $quota1 = 0;
 
+?>
+<table class="amortization">
+    <thead class="info">
+        <th>Periodo</th>
+        <th>Cuota</th>
+        <th>Intereses</th>
+        <th>Abono</th>
+        <th>Saldo</th>
+    </thead>
+<?php 
+
 //$plantilla = $lapses;
 for($i=0; $i<=$lapses;$i++ ){
 
-    $plantilla .= '<br> periodo: ' . $i . 
-                  '<br> cuota  : ' . round($quota1) .
-                  '<br> interes: ' . round($intereses). 
-                  '<br> abono  : ' . round($abono) . 
-                  '<br> saldo  : ' . round($quantify) . '<br>';
-                  
+    $plantilla .= 
+    '<tr>'.
+    '<td> periodo: ' . $i .                     '</td>'.
+    '<td> cuota  : ' . round($quota1) .         '</td>'.
+    '<td> interes: ' . round($intereses).       '</td>'.
+    '<td> abono  : ' . round($abono) .          '</td>'.
+    '<td> saldo  : ' . round($quantify) .       '</td>';
+
     $intereses = $quantify * $inte;
     $abono = $quota - $intereses;
     $quantify = $quantify - $abono;
     $quota1 = $quota;
-}
+?>
+     </tr>
+<?php 
 
 
 return $plantilla;
 }
-?>
+
+}
+?>  </table> <br><br><br> 
