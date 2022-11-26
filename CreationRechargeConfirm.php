@@ -13,6 +13,12 @@
 </head>
 
 <header class="header">
+                <?php 
+                session_start();
+                if(!isset($_SESSION["id_A"])){
+                    header("location:index.php");
+                }
+                ?>
         <div class="container-head logo-nav-container">
                 <a href="#" class="logo">DREAMBUCKS</a>
                 <div class="menu-icon">Menú</div>
