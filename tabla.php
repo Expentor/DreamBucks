@@ -30,7 +30,7 @@
 </body>
 </html>
 <?php
-$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "Admin123?", "dreambucks");
 $id = $_GET['id']; // el id del prestamo
 
 $consult = "SELECT * FROM loans WHERE id_L='$id'"; 
@@ -77,17 +77,14 @@ for($i=0; $i<=$lapses;$i++ ){
         <td>    <?php echo round($intereses)  ?>     </td>
         <td>    <?php echo round($abono)      ?>     </td>           
         <td>    <?php echo round($quantify)   ?>     </td>
-
-
+    </tr>
 <?php 
     $intereses = $quantify * $inte;
     $abono = $quota - $intereses;
     $quantify = $quantify - $abono;
     $quota1 = $quota;
 ?>
-     </tr>
-     <?php 
-
-
+<?php 
 }
-?>  </table> <br><br><br> 
+?> </table> <br><br><br> 
+

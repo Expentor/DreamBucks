@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "Admin123?", "dreambucks");
 
 // declarsmoa variables con los datos provenientes de login A utilizando el metodo post
 $NAME =$_POST["name"];
@@ -14,7 +14,7 @@ while ($row = mysqli_fetch_row($result)){
 ?>
 <?php   
         $id_U = $row[0]; //guardamos su id en una variable
-        $balance = $row[11];
+        $balance = $row[10];
 ?><br><br>
 <?php
 }

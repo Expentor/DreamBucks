@@ -4,17 +4,13 @@ require_once("../vendor/autoload.php");
 //plantilla html
 require_once("plantillas/reporte/prueba2.php");
 
-$css = file_get_contents('..styles/styleUser.css');
+$css = file_get_contents('../styles/styleAmortizationTable.css');
 
 //base de datos
 require_once('info.php');
 
 
-/*
-comprobar que informacion se obtuvo
-var_dump($info);
-die();
-*/
+
 
 $mpdf = new \Mpdf\Mpdf([
 ]);

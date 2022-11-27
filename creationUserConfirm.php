@@ -28,6 +28,13 @@
                 </div>
         </header>
 
+        <?php
+        session_start();
+        if(!isset($_SESSION["id_A"])){
+        header("location:index.php");
+        }
+        ?>
+        
         <main>
                 <form method="post" action="CreateUser.php" class="form">
                         <h2 class="form-title">Ingrese datos del usuario</h2>

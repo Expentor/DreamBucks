@@ -33,8 +33,15 @@
 </body>
 </html>
 
+    <?php
+    session_start();
+    if(!isset($_SESSION["name_U"])){
+    header("location:index.php");
+    }
+    ?>
+
 <?php
-$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "Admin123?", "dreambucks");
 // obtenemos el nombre de usuario con la variable global SESSION
 session_start();
 $user= $_SESSION["name_U"];
@@ -65,7 +72,8 @@ while ($row = mysqli_fetch_row($result)){
                 <div class="bad">
                 <h4>Actualmente usted tiene una deuda sin pagar lo cual afectara a su historial crediticio.<h4>
                 <h4>Ocasionando problemas para futuros prestamos tanto en dreambucks como en cualquier otra institucion
-                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: ' .'$' . abs($balance) . '<br></h4></div>';
+                el saldo pendiente para recuperar sus privilegios y no dañar mas su historial creticio es de: ' .'$' . abs($balance) . '<br>'
+                . 'recomendamos abonar saldo a la cuenta para cubrir la deuda</h4></div>';
         } else {
                 echo '<h4 class="text">Cuenta con un saldo de: $' . $row[10] . "<br></h4>"; //el saldo del cliente
         }
@@ -88,7 +96,7 @@ while ($row2 = mysqli_fetch_row($result)){
    echo '<p class="a">Fecha del prestamo: </p>'                 .$row2[2] .      "<br>";
    echo '<p class="a">Cantidad prestada: </p>'                  .$row2[3] .      "<br>" ;
    echo '<p class="a">El porcentaje de interes fue del: </p>'   .$row2[4] . '%' ."<br>";
-   echo '<p class="a">Faltante de pagar por este prestamo: </p>'.$row2[8] .      "<br>";
+   echo '<p class="a">Faltante de pagar por este prestamo: </p>'.$row2[5] .      "<br>";
    echo '<p class="a">Lapsos solicitados: </p>'                 .$row2[6] .      "<br>";
    ?>
 
@@ -104,7 +112,7 @@ while ($row2 = mysqli_fetch_row($result)){
  $iterator = $row2[9]; //el iterador que ayuda a que cada mes no se ejecute 2 veces la misma accion o peticion
  $total = $row2[5]; //el total del prestamo
 
- $n = 0;
+ $n = 3;
  $loan = date_create($dateLoan);//  creamos la fecha de la creacion del prestamo obtenida de la base de datos
  $date = date("Y-m-d"); //esta es la fecha que sera personalizada 
  $custom_date = strtotime('+'. $n . 'months', strtotime($date)); // AQUI SE MODIFICA LA FECHA, esta fecha se personaliza por intenciones de la presentacion, (demostrar que sucede si avanzamos en el tiempo)
@@ -167,7 +175,7 @@ $subtract_total ="UPDATE loans
                 ?>
                 <div class="alert"><h1>⚠️</h1></div>
                 <div class="bad"> <?php
-                echo '<p class="a">Usted a acomulado dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta </p><br> ';
+                echo '<p class="a">Usted acúmulo dos cuotas sin pagar, tendremos que automaticamente descontarlo de su cuenta </p><br> ';
                 ?></div><?php
    
    

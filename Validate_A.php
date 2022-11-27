@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "Admin123?", "dreambucks");
 // aqui se valida al admi que quiera hacer login
 $ID= test_input($_POST['id']);
 $PASSWORD= test_input($_POST['password']);
@@ -22,7 +22,6 @@ $rows= mysqli_num_rows($result);
 if($rows){
     session_start();
     $_SESSION["id_A"] = $_POST["id"];
-    
     header("location:admin.php"); 
 
 }else{

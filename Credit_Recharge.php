@@ -28,6 +28,12 @@
 </header>
 
 <main>
+<?php
+    session_start();
+    if(!isset($_SESSION["id_A"])){
+    header("location:index.php");
+    }
+    ?>
         <form method="post" action="Process_credit.php" class="form">
                 <h2 class="form-title">Ingrese datos del abono</h2>
 
