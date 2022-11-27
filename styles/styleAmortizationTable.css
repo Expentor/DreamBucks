@@ -9,9 +9,6 @@ html{
     box-sizing: border-box;
 }
 
-*,*::after, *::before{
-    box-sizing: inherit;
-}
 
 body {
     font-family: 'Open Sans', sans-serif;

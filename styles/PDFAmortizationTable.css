@@ -9,8 +9,6 @@ html{
     box-sizing: border-box;
 }
 
-
-
 body {
     font-family: 'Open Sans', sans-serif;
     background: #CCFCCB;
@@ -26,15 +24,7 @@ body {
     border-radius: 10px;
 
 }
-
-.amortization>:not(caption)>*>* {
-    padding: 0.5rem 0.5rem;
-}
-
 tr:nth-child(even){ background-color: rgba(0, 0, 0, 0.05); }
-
-
-
 
 .info{
     background-color: #0fb42b;
@@ -44,3 +34,12 @@ tr:nth-child(even){ background-color: rgba(0, 0, 0, 0.05); }
 th{
     text-align: inherit;
 }
+
+.amortization>:not(caption)>*>* {
+    padding: 0.5rem 0.5rem;
+}
+
+
+
+
+
