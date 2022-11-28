@@ -76,7 +76,7 @@ for($i=0; $i<=$lapses;$i++ ){
         <td>    <?php echo round($quota1)     ?>     </td>
         <td>    <?php echo round($intereses)  ?>     </td>
         <td>    <?php echo round($abono)      ?>     </td>           
-        <td>    <?php echo round($quantify)   ?>     </td>
+        <td>    <?php echo round($quantify) +0?>     </td>
     </tr>
 <?php 
     $intereses = $quantify * $inte;
