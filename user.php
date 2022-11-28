@@ -41,7 +41,7 @@
     ?>
 
 <?php
-$connect = mysqli_connect("localhost", "root", "Admin123?", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
 // obtenemos el nombre de usuario con la variable global SESSION
 session_start();
 $user= $_SESSION["name_U"];

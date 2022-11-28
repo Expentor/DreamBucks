@@ -30,7 +30,7 @@
 </body>
 </html>
 <?php
-$connect = mysqli_connect("localhost", "root", "Admin123?", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
 $id = $_GET['id']; // el id del prestamo
 
 $consult = "SELECT * FROM loans WHERE id_L='$id'"; 

@@ -9,7 +9,6 @@ html{
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Open Sans', sans-serif;
     background: #CCFCCB;
@@ -23,6 +22,7 @@ body {
     border-collapse: collapse;
     border-color: #89aa89;
     border-radius: 10px;
+
 }
 
 .amortization>:not(caption)>*>* {
@@ -30,6 +30,11 @@ body {
 }
 
 tr:nth-child(even){ background-color: rgba(0, 0, 0, 0.05); }
+tr:hover{
+    background: rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 8px 32px rgb(114, 114, 114);
+    transition: all .1s;
+}
 
 
 .info{
