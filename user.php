@@ -41,7 +41,7 @@
     ?>
 
 <?php
-$connect = mysqli_connect("localhost", "root", "Admin123?", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 // obtenemos el nombre de usuario con la variable global SESSION
 session_start();
 $user= $_SESSION["name_U"];
@@ -215,7 +215,7 @@ $subtract_total ="UPDATE loans
                 </form>
 </div></li></ul></li></ul>
 <div class="cadabra_2">
-        <button class="pay" onclick="location.href='tabla.php?id=<?php echo $row2[0]?>'">Tabla de Mortizacion</a><br> 
+        <button class="pay" onclick="location.href='tabla.php?id=<?php echo $row2[0]?>'">Tabla de Amortizacion</a><br> 
 </div>
 
 <button class="pay" onclick="location.href='/app/prueba.php?id=<?php echo $row2[0]?>'">Mostrar pdf</a><br> 
