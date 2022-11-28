@@ -54,8 +54,6 @@ $abono = 0;
 $quota1 = 0;
 
 
-
-
 ?>
 <table class="amortization">
     <thead class="info">
