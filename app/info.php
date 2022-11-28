@@ -2,7 +2,7 @@
 $id = $_GET['id'];
 
 $info = array();
-$mysqli = new mysqli("localhost", "root", "Admin123?", "dreambucks");
+$mysqli = new mysqli("localhost", "root", "", "dreambucks");
 $mysqli->set_charset('utf8');
 $statement = $mysqli->prepare("SELECT * FROM loans WHERE id_L='$id'" );
 $statement->execute();

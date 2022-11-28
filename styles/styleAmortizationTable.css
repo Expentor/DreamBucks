@@ -1,5 +1,6 @@
 
 
+
 * {
     margin: 0;
     padding: 0;
@@ -24,11 +25,6 @@ body {
     border-radius: 10px;
 
 }
-
-.amortization>:not(caption)>*>* {
-    padding: 0.5rem 0.5rem;
-}
-
 tr:nth-child(even){ background-color: rgba(0, 0, 0, 0.05); }
 tr:hover{
     background: rgba(0, 0, 0, 0.075);
@@ -45,3 +41,8 @@ tr:hover{
 th{
     text-align: inherit;
 }
+
+.amortization>:not(caption)>*>* {
+    padding: 0.5rem 0.5rem;
+}
+

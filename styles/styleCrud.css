@@ -78,9 +78,9 @@ main{
 }
 
 .btn-delete{
-    color: var(--negro);
+    color: var(--cremamenta);
     text-decoration: none;
-    background-color: red;
+    background-color: yellow;
     border-color: var(--negro);
     border-radius: 15px;
     padding: 5px 5px;

@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 <?php
-$connect = mysqli_connect("localhost", "root", "Admin123?", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "", "dreambucks");
 
 // declarsmoa variables con los datos provenientes de login A utilizando el metodo post
 $NAME =$_POST["name"];
@@ -31,7 +31,7 @@ while ($row = mysqli_fetch_row($result)){
 <?php
 }
 // sumamos la cantidad del prestamo que solicita el usuario mas el adeudado que tiene de prestamos anteriores y lo guardamo en total
-$totalDebt = $QUANTIFY + $due;
+$totalDebt = intval($QUANTIFY) + intval($due);
 //obtenemos fecha actual
 $DATE = date('Y-m-d');
 // verificamos que el nombre del usuario existe al igual que su contraseña
