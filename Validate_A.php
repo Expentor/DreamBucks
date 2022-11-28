@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "Admin123?", "dreambucks");
 // aqui se valida al admi que quiera hacer login
 $ID= test_input($_POST['id']);
 $PASSWORD= test_input($_POST['password']);
