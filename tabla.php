@@ -23,6 +23,8 @@
                 <ul>
                     <li><a href="Logout.php">Cerrar Sesion</a></li>
                     <li><a href="user.php">Volver a mis prestamos</a></li>
+                    <button class="pay" onclick="location.href='/app/prueba.php?id=<?php echo $_POST['id']?>'">Mostrar pdf</a><br> 
+
                 </ul>
             </nav>
         </div>
@@ -30,7 +32,7 @@
 </body>
 </html>
 <?php
-$connect = mysqli_connect("localhost", "root", "", "dreambucks");
+$connect = mysqli_connect("localhost", "root", "M33ty-2003", "dreambucks");
 $id = $_GET['id']; // el id del prestamo
 
 $consult = "SELECT * FROM loans WHERE id_L='$id'"; 

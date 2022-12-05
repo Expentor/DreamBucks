@@ -100,3 +100,18 @@ header a{
 
     }
 }
+.pay {
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 100%;
+    background: #0fb42b;
+    border: 0px solid;
+    color: white;
+    text-decoration: none;
+}
+
+.pay:hover {
+    background: #3C760C;
+    color: white;
+    transition: all .5s;
+}

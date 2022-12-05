@@ -28,56 +28,26 @@ html{
 body {
     *font-family: 'Open Sans', sans-serif;
     *background-color: var(--negro);
-    background: linear-gradient(to right, var(--negro), purple);
-
+    background: linear-gradient(to right, var(--negro), rgb(180, 0, 180));
+    
 }
 
-.container_a {
-    margin-top: 2em;
-    margin-bottom: 9.5em;
-    margin-left: 10%;
-    width: 35%;
-    height: 380px;
-    border-radius: 10px;
-    border: 4px solid var(--verde);
-    background: linear-gradient(to right, var(--verde), var(--superverde));
-    padding: 1% 1.2% 0% 1%;
-    color:var(--negro);
-    font-weight: bold;
-    float: left;
-    flex-direction: row;
-    text-align: left;
-    text-size-adjust: initial;
-    transition: all .3s;
-}
-
-
-.container_a:hover {
-    margin-top: 2.0em;
-    box-shadow: 0px 8px 32px var(--verde);
-    background-color: var(--verdete);
-}
-
-
-.a {
-    display: inline;
-    text-decoration: none;
+.bajalo{
+    text-align: center;
+    padding-top: 2%;
 }
 
 .advertisements {
-    align-items: center;
     margin-top: 10%;
-    margin-left: 35%;
+    margin-left: 10%;
     height: 120px;
     width: 500px;
     background: linear-gradient(to right, purple, var(--verde));
-    border: 5px solid var(--negro);
+    border: 5px solid linear-gradient(to right, purple, var(--verde));
     border-radius: 20px;
     text-align: center;
     transition: all .3s;
-    /*
-    padding: 8em 8em 1em;
-    */
+    color:white;
 }
 
 .bad {
@@ -103,26 +73,48 @@ body {
     padding: 2rem 0;
 }
 
-.cadabra {
-    padding-top: 2em;
-    *margin-left: -.9rem;
+.container_a {
+    margin-top: 2em;
+    margin-bottom: 3.5em;
+    margin-left: 10%;
+    width: 35%;
+    height: 35%;
+    border-radius: 10px;
+    border: 4px solid linear-gradient(to right, var(--verde), var(--superverde));
+    background: linear-gradient(to right, var(--verde), var(--superverde));
     float: left;
+    flex-direction: row;
+    transition: all .3s;
+    text-size-adjust: initial;
+}
+
+.container_a:hover {
+    margin-top: 2.0em;
+    box-shadow: 0px 8px 32px var(--verde);
+    background-color: var(--verdete);
+}
+
+.contain_i-t{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+    font-weight: bold;
+    background-color: #09090900;
+    color: rgb(255, 255, 255);
+}
+
+.a {
+    display: inline;
+    text-decoration: none;
+}
+
+.cadabra {
+    float: left;
+    display: flex;
     flex-direction: row;
     text-align: left;
     text-size-adjust: initial;
-    display: flex;
-    justify-content: space-between;
-}
-
-button{
-    margin-left: 20px;
-    background-color: var(--verde);
-}
-
-.cadabra_2 {
-    padding-top: 2.02em;
-    margin-right: -1.2rem;
-    text-align: end;
 }
 
 ul, ol{
@@ -136,7 +128,6 @@ ul, ol{
     color: #ffffff;
     text-decoration: none;
     padding: 11px 15px;
-    margin-left: 20px;
     display: block;
 }
 
@@ -147,15 +138,18 @@ ul, ol{
 }
 
 .pr{
+    width: 114%;
     border: 0px solid;
     border-radius: 0px 0px 6px 6px;
-    background-color: var(--verde);
+    background: linear-gradient(to right, var(--verde), var(--superverde));
     color: #ffffff;
     text-decoration: none;
     padding: 10px 15px;
     display: block;
+    box-shadow: 0px 0px 32px var(--verde);
+    background-color: var(--verdete);
+    
 }
-
 
 .boton > li{
     float: left;
@@ -172,36 +166,13 @@ min-width: 350px;
     display: block;
 }
 
-.cantidad {
-    width: 30%;
-    border-radius: 5px;
-    border: 0px solid #40c440;
-    padding: 5px;
-}
-
-.pay {
-    border-radius: 10px 0px 6px 0px;
-    padding: 10px 15px;
-    font-size: 100%;
-    background: #3C760C;
-    border: 0px solid;
-    color: white;
-    text-decoration: none;
-}
-
-.pay:hover {
-    background: #40c440;
-    color: white;
-    transition: all .5s;
-}
-
 .buttowon { 
     margin-left: 3rem;
     margin-right: -3em;
     border-radius: 10px 10px 10px 10px;
     padding: 10px 15px;
     font-size: 100%;
-    background: #40c440;
+    background: #40c44000;
     border: 0px solid;
     color: white;
     text-decoration:solid;
@@ -212,3 +183,31 @@ min-width: 350px;
     color: white;
     transition: all .5s;
 }
+
+.cantidad {
+    width: 30%;
+    border-radius: 5px;
+    border: 0px solid #40c440;
+    padding: 5px;
+}
+
+
+.cadabra_2 {
+    text-align: end;
+    /*margin-left: 13.95rem;*/
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: var(--verdesalvia);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 11px 15px;
+    text-align: end;
+}
+
+.cadabra_2:hover {
+    background: #40c440;
+    color: white;
+    transition: all .5s;
+}
+
+
